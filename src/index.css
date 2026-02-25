@@ -16,3 +16,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@font-face {
+  font-family: "Black Han Sans";
+  font-weight: normal;
+  src: url("./assets/fonts/BlackHanSans-Regular.ttf") format(truetype);
+}
