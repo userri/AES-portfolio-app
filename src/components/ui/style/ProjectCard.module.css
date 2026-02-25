@@ -1,0 +1,63 @@
+.body {
+  width: 460px;
+  height: 460px;
+  font-family: "Noto Sans";
+  padding: 40px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.top {
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+.memberCount {
+  background-color: rgb(34, 34, 151);
+  padding: 8px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  height: fit-content;
+}
+.icon {
+  width: 70px;
+  height: 70px;
+  color: black;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.serviceLink {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: normal;
+}
+.subtitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+.description {
+  font-size: 14px;
+  font-weight: normal;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin-top: 10px;
+}
+.skills {
+  display: flex;
+  flex-direction: row;
+}
+.duration {
+  font-size: 14px;
+  color: 5f5f5f;
+  float: right;
+}

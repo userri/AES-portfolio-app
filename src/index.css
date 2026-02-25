@@ -22,3 +22,9 @@ a {
   font-weight: normal;
   src: url("./assets/fonts/BlackHanSans-Regular.ttf") format(truetype);
 }
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: normal;
+  src: url("./assets/fonts/NotoSansKR-VariableFont_wght.ttf") format(truetype);
+}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "../../components/ui/SectionTitle";
 import SkillTag from "../../components/ui/SkillTag";
+import ProjectCard from "../../components/ui/ProjectCard";
 
 const Home = () => {
   return (
@@ -14,9 +15,34 @@ const Home = () => {
       <SectionTitle title="ARCHIVING" />
       <SectionTitle title="PROJECTS" />
       <SectionTitle title="CAREER" />
-      <SkillTag text="React" bgColor="#988976" textColor="#ffffff" />
-      <SkillTag text="React" bgColor="#773733" textColor="#aaaaaa" />
-      <SkillTag text="Javascript" bgColor="#0f0f0f" textColor="#ffffff" />
+      <SkillTag text="React" bgColor="red" textColor="#ffffff" />
+      <SkillTag text="React" bgColor="blue" textColor="orange" />
+      <SkillTag text="Javascript" bgColor="#0f5f0f" textColor="#ffffff" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <ProjectCard />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
     </div>
   );

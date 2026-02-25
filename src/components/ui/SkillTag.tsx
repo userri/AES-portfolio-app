@@ -6,8 +6,8 @@ interface SkillTagProps {
 }
 const SkillTag = ({
   text,
-  bgColor = "#e0e0e0",
-  textColor = "#333",
+  bgColor = "black",
+  textColor = "white",
 }: SkillTagProps) => {
   return (
     <span
