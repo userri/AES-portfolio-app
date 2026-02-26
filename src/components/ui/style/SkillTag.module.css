@@ -1,6 +1,9 @@
 .body {
+  width: fit-content;
+  /* 줄바꿈 방지 */
+  white-space: nowrap;
   border-radius: 10px;
-  font-weight: bold;
-  padding: 8px 10px;
-  padding-top: 5px;
+  font-weight: 700;
+  padding: 8px;
+  padding-bottom: 5px;
 }
