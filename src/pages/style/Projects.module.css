@@ -1,0 +1,20 @@
+.body {
+  height: fit-content;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px;
+}
+.skills {
+  width: 300px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+@media (max-width: 1000px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}

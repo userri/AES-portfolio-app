@@ -1,0 +1,50 @@
+.body {
+  font-family: "Noto Sans";
+  font-weight: 100;
+  width: 100%;
+  height: fit-content;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.boxes {
+  display: grid;
+  /* box가 최소 400px 유지, 없으면 자동으로 1열 */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+.box {
+  /* 부모인 boxes에서 너비 설정됨 */
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  max-width: 400px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px 28px;
+}
+.img {
+  height: 100px;
+  width: fit-content;
+}
+.link {
+  font-size: 20px;
+  color: #487fff;
+
+  font-weight: bolder;
+}
+.description {
+  font-weight: normal;
+}
+/* 화면 너비 좁아지면 1열로 변경 */
+@media (max-width: 400px) {
+  .boxes {
+    grid-template-columns: 1fr;
+  }
+}
