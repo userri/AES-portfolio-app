@@ -8,11 +8,6 @@ const Skills = () => {
       .toString(16)
       .padStart(6, "0")}`;
 
-  const skills = [
-    { skillName: "JavaScript", skillColor: getRandomColor() },
-    { skillName: "Java", skillColor: getRandomColor() },
-    { skillName: "Docker", skillColor: getRandomColor() },
-  ];
   return (
     <div className={styles.body}>
       <SectionTitle title="SKILLS" />
