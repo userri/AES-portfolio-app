@@ -14,8 +14,10 @@ const Skills = () => {
       <div className={styles.box}>
         <div className={styles.skillBox}>
           {/* TODO: map으로 넣기 */}
-          <img src={sampleImg} alt="" />
-          <div className={styles.category}>Language</div>
+          <div className={styles.iconTitle}>
+            <img className={styles.icon} src={sampleImg} alt="" />
+            <div className={styles.category}>Language</div>
+          </div>
           <div className={styles.skillContents}>
             <SkillTag
               text="Typescript"
@@ -42,8 +44,10 @@ const Skills = () => {
 
         <div className={styles.skillBox}>
           {/* TODO: map으로 넣기 */}
-          <img src={sampleImg} alt="" />
-          <div className={styles.category}>Frontend</div>
+          <div className={styles.iconTitle}>
+            <img className={styles.icon} src={sampleImg} alt="" />
+            <div className={styles.category}>Frontend</div>
+          </div>
           <div className={styles.skillContents}>
             <SkillTag
               text="Next.js / React"
@@ -64,9 +68,31 @@ const Skills = () => {
         </div>
         <div className={styles.skillBox}>
           {/* TODO: map으로 넣기 */}
-          <img src={sampleImg} alt="" />
-          <div className={styles.category}>Backend</div>
+          <div className={styles.iconTitle}>
+            <img className={styles.icon} src={sampleImg} alt="" />
+            <div className={styles.category}>Backend</div>
+          </div>
           <div className={styles.skillContents}>
+            <SkillTag
+              text="Spring (Boot)"
+              bgColor={getRandomColor()}
+              textColor={getRandomColor()}
+            />
+            <SkillTag
+              text="Gradle"
+              bgColor={getRandomColor()}
+              textColor={getRandomColor()}
+            />
+            <SkillTag
+              text="Firebase"
+              bgColor={getRandomColor()}
+              textColor={getRandomColor()}
+            />
+            <SkillTag
+              text="Supabase"
+              bgColor={getRandomColor()}
+              textColor={getRandomColor()}
+            />
             <SkillTag
               text="Spring (Boot)"
               bgColor={getRandomColor()}
@@ -92,8 +118,10 @@ const Skills = () => {
 
         <div className={styles.skillBox}>
           {/* TODO: map으로 넣기 */}
-          <img src={sampleImg} alt="" />
-          <div className={styles.category}>DevOps</div>
+          <div className={styles.iconTitle}>
+            <img className={styles.icon} src={sampleImg} alt="" />
+            <div className={styles.category}>DevOps</div>
+          </div>
           <div className={styles.skillContents}>
             <SkillTag
               text="Docker"

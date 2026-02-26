@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px 30px;
 }
 .box {
   display: flex;
@@ -15,18 +16,18 @@
   height: fit-content;
   row-gap: 20px;
   pad: 50px;
-  margin-bottom: 50px;
   background-color: #fcf3d5;
   padding: 32px;
   border-radius: 16px;
 }
 
 .skillBox {
+  width: 100%;
   font-size: large;
   align-self: center;
   display: flex;
-  flex-direction: col;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   gap: 10px;
 }
 .category {
@@ -36,6 +37,23 @@
 }
 .skillContents {
   display: flex;
-  width: 500px;
+  /* 자리가 없으면 다음 줄로 */
+  flex-wrap: wrap;
+  width: 100%;
+  /* 화면 좁아지면 줄어들게 */
+  max-width: 1200px;
   gap: 10px;
+}
+.iconTitle {
+  display: flex;
+  justify-content: center;
+}
+.icon {
+  width: 30px;
+  object-fit: cover;
+}
+@media (max-width: 50px) {
+  .skillContents {
+    grid-template-columns: 1fr;
+  }
 }
