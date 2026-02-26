@@ -3,7 +3,6 @@ import styles from "../../style/Archiving.module.css";
 import githubImg from "../../../assets/image/github.png";
 
 const Archiving = () => {
-  const data = [];
   return (
     <div className={styles.body}>
       <SectionTitle title="ARCHIVING" />
