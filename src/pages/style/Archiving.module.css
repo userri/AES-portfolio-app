@@ -20,11 +20,10 @@
   align-items: center;
 }
 .box {
-  /* 부모인 boxes에서 너비 설정됨 */
   background-color: white;
   border-radius: 12px;
   display: flex;
-  max-width: 400px;
+  width: 400px;
   flex-direction: column;
   gap: 10px;
   padding: 32px 28px;
@@ -43,7 +42,8 @@
   font-weight: normal;
 }
 /* 화면 너비 좁아지면 1열로 변경 */
-@media (max-width: 400px) {
+/* 이 부분이 카드보다 넓어야 좁아짐을 감지할수 있음! */
+@media (max-width: 800px) {
   .boxes {
     grid-template-columns: 1fr;
   }

@@ -19,7 +19,7 @@ const Projects = () => {
     },
     {
       iconimg: img2,
-      memberCnt: 1,
+      memberCnt: 4,
       title: "1차 포트폴리오",
       serviceLink: "https://naver.com",
       skills: ["React", "Spring Boot"],
