@@ -33,7 +33,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <ProjectCard />
+      <ProjectCard title="내 프로젝트" />
       <br />
       <br />
       <br />
