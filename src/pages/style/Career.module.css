@@ -42,6 +42,8 @@
   border: 1.5px solid rgb(215, 215, 215);
 }
 .texts {
+  width: 500px;
+  /* min-width: 300px; */
   display: flex;
   flex-direction: column;
   gap: 10px;
