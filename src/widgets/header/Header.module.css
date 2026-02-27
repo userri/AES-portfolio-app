@@ -1,0 +1,79 @@
+.body {
+  font-family: "Noto Sans";
+  height: 800px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../../assets/image/header.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+  width: 100%;
+  transform: scale(1.1);
+  filter: brightness(0.5) blur(0.5px);
+  z-index: -1;
+}
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  align-items: center;
+  padding: 14px 30px;
+  padding-right: 50px;
+  justify-content: space-between;
+  margin-bottom: 140px;
+}
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffffffb2;
+}
+.nav {
+  color: #ffffffb2;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  font-size: 24px;
+}
+.name {
+  font-size: 64px;
+  font-family: "Black Han Sans";
+  color: rgb(223, 223, 223);
+  white-space: pre-line;
+  align-content: center;
+  align-self: cen;
+}
+.line {
+  height: 2px;
+  width: 60px;
+  background-color: #e8ac14b2;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.intro {
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 5px;
+}
+.more {
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 100px;
+  background-color: #e8d314c6;
+  padding: 12px 24px;
+  margin-top: 20px;
+}
