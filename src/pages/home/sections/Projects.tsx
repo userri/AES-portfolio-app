@@ -111,7 +111,12 @@ const Projects = () => {
       </form>
       <div className={styles.searchTags}>
         {skills.map((skill) => (
-          <SkillTag text={skill} bgColor="black" textColor="white" />
+          <SkillTag
+            key={skill}
+            text={skill}
+            bgColor="black"
+            textColor="white"
+          />
         ))}
       </div>
       <div className={styles.skills}>
