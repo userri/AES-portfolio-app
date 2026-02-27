@@ -1,21 +1,10 @@
-// import { Link } from "react-router-dom";
-// import SectionTitle from "../../components/ui/SectionTitle";
-// import SkillTag from "../../components/ui/SkillTag";
-// import ProjectCard from "../../components/ui/ProjectCard";
-// import Info from "../../components/ui/Info";
-// import person from "../../assets/image/person.png";
-// import calendar from "../../assets/image/calendar.png";
-// import location from "../../assets/image/location.png";
-// import call from "../../assets/image/call.png";
-// import mail from "../../assets/image/mail.png";
-// import pencil from "../../assets/image/pencil.png";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Archiving from "./sections/Archiving";
 import Projects from "./sections/Projects";
 import Career from "./sections/Career";
 import Footer from "../../widgets/footer/Footer";
-import Header from "../../widgets/header/Header";
+import Intro from "./sections/Intro";
 
 const Home = () => {
   return (
@@ -24,7 +13,7 @@ const Home = () => {
       <Link to="/projects">
         <button>프로젝트 상세 화면으로 이동</button>
       </Link>{" "} */}
-      <Header />
+      <Intro />
       <About />
       <Skills />
       <Archiving />

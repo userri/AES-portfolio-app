@@ -25,10 +25,10 @@
 .skillBox {
   width: 100%;
   font-size: large;
-  align-self: center;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  height: fit-content;
+  align-items: center;
   gap: 10px;
 }
 .category {
@@ -44,6 +44,7 @@
   /* 화면 좁아지면 줄어들게 */
   max-width: 1200px;
   gap: 10px;
+  height: fit-content;
 }
 .iconTitle {
   display: flex;

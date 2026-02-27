@@ -1,5 +1,5 @@
 import styles from "./style/SectionTitle.module.css";
-import chainImage from "../../assets/image/black-link.webp";
+import chainImage from "../../assets/icon/black-link.webp";
 
 interface SectionTitleProps {
   img?: string;

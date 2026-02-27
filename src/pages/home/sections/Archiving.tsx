@@ -1,6 +1,6 @@
 import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Archiving.module.css";
-import githubImg from "../../../assets/image/github.png";
+import githubImg from "../../../assets/icon/github.png";
 
 const Archiving = () => {
   return (

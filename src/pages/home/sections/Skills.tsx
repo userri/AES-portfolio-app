@@ -1,15 +1,15 @@
 import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Skills.module.css";
-import sampleImg from "../../../assets/image/calendar.png";
+import sampleImg from "../../../assets/icon/calendar.png";
 import SkillTag from "../../../components/ui/SkillTag";
 import { useQuery } from "@tanstack/react-query";
 import type { Skill } from "../../../types/Skill";
 import { supabase } from "../../../api/supabase";
 const Skills = () => {
-  const getRandomColor = () =>
-    `#${Math.floor(Math.random() * 0xffffff)
-      .toString(16)
-      .padStart(6, "0")}`;
+  // const getRandomColor = () =>
+  //   `#${Math.floor(Math.random() * 0xffffff)
+  //     .toString(16)
+  //     .padStart(6, "0")}`;
 
   const {
     data: skills = [],
@@ -40,7 +40,7 @@ const Skills = () => {
       <SectionTitle title="SKILLS" />
       <div className={styles.box}>
         {skillCategory.map((skillKind) => (
-          <div className={styles.skillBox}>
+          <div key={skillKind.skillName} className={styles.skillBox}>
             <div className={styles.iconTitle}>
               <img src={skillKind.skillIcon} alt="" />
               <div className={styles.category}>{skillKind.skillName}</div>

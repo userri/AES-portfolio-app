@@ -1,4 +1,4 @@
-import img from "../../assets/image/person.png";
+import img from "../../assets/icon/person.png";
 import styles from "../ui/style/Info.module.css";
 
 interface InfoProps {

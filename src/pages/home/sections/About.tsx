@@ -1,12 +1,12 @@
 import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/About.module.css";
 import Info from "../../../components/ui/Info";
-import person from "../../../assets/image/person.png";
-import calendar from "../../../assets/image/calendar.png";
-import location from "../../../assets/image/location.png";
-import call from "../../../assets/image/call.png";
-import mail from "../../../assets/image/mail.png";
-import pencil from "../../../assets/image/pencil.png";
+import person from "../../../assets/icon/person.png";
+import calendar from "../../../assets/icon/calendar.png";
+import location from "../../../assets/icon/location.png";
+import call from "../../../assets/icon/call.png";
+import mail from "../../../assets/icon/mail.png";
+import pencil from "../../../assets/icon/pencil.png";
 
 const About = () => {
   const infos = [
