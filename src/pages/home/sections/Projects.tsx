@@ -84,7 +84,13 @@ const Projects = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("projects")
-        .select("*")
+        .select(
+          `*
+          , project_skills(
+          skill_id,
+          skills(name)
+        )`,
+        )
         .order("start_date", { ascending: false });
       if (error) throw error;
       return (data ?? []) as Project[];
@@ -127,7 +133,8 @@ const Projects = () => {
             memberCnt={project.member_count}
             title={project.title}
             serviceLink={project.service_link}
-            // skills={project.skills}
+            // project_skills를 string 배열로 바꿔서 전달하기
+            skills={project.project_skills.map((item) => item.skills.name)}
           />
         ))}
       </div>

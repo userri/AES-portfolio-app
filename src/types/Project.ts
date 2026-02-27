@@ -9,4 +9,11 @@ export interface Project {
   logo_url: string;
   created_at: string;
   updated_at: string;
+
+  project_skills: {
+    skill_id: number;
+    skills: {
+      name: string;
+    };
+  }[];
 }
