@@ -23,6 +23,7 @@ const About = () => {
       <div className={styles.grid}>
         {infos.map((info) => (
           <Info
+            key={info.category}
             imgSrc={info.imgSrc}
             category={info.category}
             content={info.content}
