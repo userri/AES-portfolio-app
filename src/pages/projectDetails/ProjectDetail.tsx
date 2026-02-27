@@ -3,6 +3,7 @@ import styles from "./ProjectDetail.module.css";
 import type Comment from "../../types/Comment";
 import { supabase } from "../../api/supabase";
 import { useState } from "react";
+import CommentBox from "../../components/ui/CommentBox";
 
 const ProjectDetail = () => {
   //   const [id, setCount] = useState(0);
@@ -23,7 +24,9 @@ const ProjectDetail = () => {
       return (data ?? []) as Comment[];
     },
   });
-  console.log(comments);
+
+  if (isLoading) return <p>로딩 중...</p>;
+  if (error) return <p>에러가 발생했습니다.</p>;
   return (
     <div>
       <div className={styles.mdBox}></div>
@@ -36,13 +39,11 @@ const ProjectDetail = () => {
         </div>
         <div className={styles.writtenComments}>
           {comments.map((comment) => (
-            <div className={styles.commentItem}>
-              <div className={styles.userNickname}>{comment.user_nickname}</div>
-              <div className={styles.commentCreatedDate}>
-                {comment.created_at}
-              </div>
-              <div className={styles.content}>{comment.content}</div>
-            </div>
+            <CommentBox
+              userNickname={comment.user_nickname}
+              createdAt={comment.created_at}
+              content={comment.content}
+            />
           ))}
         </div>
         <form className={styles.newCommentBox}>
