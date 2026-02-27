@@ -5,14 +5,15 @@ import Projects from "./sections/Projects";
 import Footer from "../../widgets/footer/Footer";
 import Intro from "./sections/Intro";
 import Careers from "./sections/Careers";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div>
-      {/* <h1>홈 화면입니다</h1>
-      <Link to="/projects">
+      <h1>홈 화면입니다</h1>
+      <Link to="/project-detail">
         <button>프로젝트 상세 화면으로 이동</button>
-      </Link>{" "} */}
+      </Link>{" "}
       <Intro />
       <About />
       <Skills />
