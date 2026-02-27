@@ -8,6 +8,8 @@ interface ProjectCardProps {
   title: string;
   serviceLink?: string;
   skills?: string[];
+  start_date?: string;
+  end_date?: string;
 }
 
 const ProjectCard = ({
@@ -16,6 +18,8 @@ const ProjectCard = ({
   title,
   serviceLink = "https://github.com/userri/",
   skills = ["Java", "JavaScript", "Spring Boot", "JPA", "MySQL", "Redis"],
+  start_date = "2026.01.01",
+  end_date = "2026.01.02",
 }: ProjectCardProps) => {
   return (
     <div className={styles.body}>
@@ -41,7 +45,11 @@ const ProjectCard = ({
           <SkillTag text={skill} bgColor="black" textColor="white" />
         ))}
       </div>{" "}
-      <div className={styles.duration}>2026-02-24 ~ 2026-03-04</div>
+      <div className={styles.duration}>
+        <div>{start_date}</div>
+        <div> ~ </div>
+        <div>{end_date}</div>{" "}
+      </div>
     </div>
   );
 };
