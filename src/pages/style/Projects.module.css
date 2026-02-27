@@ -18,3 +18,33 @@
     grid-template-columns: 1fr;
   }
 }
+.search {
+  height: fit-content;
+  width: 500px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: 2.5px solid #cccaca;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  gap: 10px;
+}
+.placeholder {
+  font-size: 20px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  /* color: black; */
+}
+.icon {
+  height: 24px;
+}
+
+.searchTags {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  gap: 20px;
+}
