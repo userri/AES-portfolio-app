@@ -1,6 +1,6 @@
 import SkillTag from "./SkillTag";
 import styles from "./style/ProjectCard.module.css";
-import iconImgSample from "../../assets/image/black-link.webp";
+import iconImgSample from "../../assets/icon/black-link.webp";
 
 interface ProjectCardProps {
   iconImg?: string;
@@ -42,7 +42,12 @@ const ProjectCard = ({
       <div></div>
       <div className={styles.skills}>
         {skills.map((skill) => (
-          <SkillTag text={skill} bgColor="black" textColor="white" />
+          <SkillTag
+            key={skill}
+            text={skill}
+            bgColor="black"
+            textColor="white"
+          />
         ))}
       </div>{" "}
       <div className={styles.duration}>
