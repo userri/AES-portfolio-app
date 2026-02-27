@@ -2,155 +2,64 @@ import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Skills.module.css";
 import sampleImg from "../../../assets/image/calendar.png";
 import SkillTag from "../../../components/ui/SkillTag";
+import { useQuery } from "@tanstack/react-query";
+import type { Skill } from "../../../types/Skill";
+import { supabase } from "../../../api/supabase";
 const Skills = () => {
   const getRandomColor = () =>
     `#${Math.floor(Math.random() * 0xffffff)
       .toString(16)
       .padStart(6, "0")}`;
 
+  const {
+    data: skills = [],
+    isLoading,
+    error,
+  } = useQuery<Skill[]>({
+    queryKey: ["skills"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("skills")
+        .select("*")
+        .order("name");
+      if (error) throw error;
+      return (data ?? []) as Skill[];
+    },
+  });
+  const skillCategory = [
+    { skillName: "LANGUAGE", skillIcon: sampleImg },
+    { skillName: "FRONTEND", skillIcon: sampleImg },
+    { skillName: "BACKEND", skillIcon: sampleImg },
+    { skillName: "DEV_OPS", skillIcon: sampleImg },
+  ];
+  if (isLoading) return <p>로딩 중...</p>;
+  if (error) return <p>에러가 발생했습니다.</p>;
+
   return (
     <div className={styles.body}>
       <SectionTitle title="SKILLS" />
       <div className={styles.box}>
-        <div className={styles.skillBox}>
-          {/* TODO: map으로 넣기 */}
-          <div className={styles.iconTitle}>
-            <img className={styles.icon} src={sampleImg} alt="" />
-            <div className={styles.category}>Language</div>
+        {skillCategory.map((skillKind) => (
+          <div className={styles.skillBox}>
+            <div className={styles.iconTitle}>
+              <img src={skillKind.skillIcon} alt="" />
+              <div className={styles.category}>{skillKind.skillName}</div>
+            </div>
+            <div className={styles.skillContents}>
+              {skills
+                .filter((skill) => skill.category === skillKind.skillName)
+                .map((skill) => (
+                  <SkillTag
+                    key={skill.id}
+                    text={skill.name}
+                    bgColor={skill.background_color}
+                    textColor={skill.text_color}
+                  />
+                ))}
+            </div>
           </div>
-          <div className={styles.skillContents}>
-            <SkillTag
-              text="Typescript"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="JavaScript"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Python"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Kotlin"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-          </div>
-        </div>
-
-        <div className={styles.skillBox}>
-          {/* TODO: map으로 넣기 */}
-          <div className={styles.iconTitle}>
-            <img className={styles.icon} src={sampleImg} alt="" />
-            <div className={styles.category}>Frontend</div>
-          </div>
-          <div className={styles.skillContents}>
-            <SkillTag
-              text="Next.js / React"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="React-Query"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Vite"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-          </div>
-        </div>
-        <div className={styles.skillBox}>
-          {/* TODO: map으로 넣기 */}
-          <div className={styles.iconTitle}>
-            <img className={styles.icon} src={sampleImg} alt="" />
-            <div className={styles.category}>Backend</div>
-          </div>
-          <div className={styles.skillContents}>
-            <SkillTag
-              text="Spring (Boot)"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Gradle"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Firebase"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Supabase"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Spring (Boot)"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Gradle"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Firebase"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Supabase"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-          </div>
-        </div>
-
-        <div className={styles.skillBox}>
-          {/* TODO: map으로 넣기 */}
-          <div className={styles.iconTitle}>
-            <img className={styles.icon} src={sampleImg} alt="" />
-            <div className={styles.category}>DevOps</div>
-          </div>
-          <div className={styles.skillContents}>
-            <SkillTag
-              text="Docker"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="AWS (ECS, EB)"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Kubernetes"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Redis"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-            <SkillTag
-              text="Vercel"
-              bgColor={getRandomColor()}
-              textColor={getRandomColor()}
-            />
-          </div>
-        </div>
-      </div>
+        ))}
+      </div>{" "}
     </div>
   );
 };

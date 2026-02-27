@@ -40,7 +40,7 @@
   display: flex;
   /* 자리가 없으면 다음 줄로 */
   flex-wrap: wrap;
-  width: 100%;
+  width: 600px;
   /* 화면 좁아지면 줄어들게 */
   max-width: 1200px;
   gap: 10px;
