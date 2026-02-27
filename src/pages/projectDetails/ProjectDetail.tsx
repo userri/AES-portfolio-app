@@ -6,7 +6,13 @@ import { useState } from "react";
 import CommentBox from "../../components/ui/CommentBox";
 
 const ProjectDetail = () => {
-  //   const [id, setCount] = useState(0);
+  const [form, setForm] = useState({ nickname: "", content: "" });
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setForm((previous) => ({ ...previous, [name]: value }));
+  };
+
   const {
     data: comments = [],
     isLoading,
@@ -25,6 +31,16 @@ const ProjectDetail = () => {
     },
   });
 
+  // 댓글추가
+  const onSubmit = async (userNickname: string, content: string) => {
+    // preventdefault 안들어가도됨?
+    if (!userNickname) return alert("닉네임을 작성해주세요");
+    if (!content) return alert("내용을 작성해주세요");
+
+    return await supabase
+      .from("comments")
+      .insert([{ user_nickname: userNickname, content: content }]);
+  };
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
   return (
@@ -46,17 +62,27 @@ const ProjectDetail = () => {
             />
           ))}
         </div>
-        <form className={styles.newCommentBox}>
+        <form className={styles.newCommentBox} onSubmit={onSubmit}>
           <div className={styles.newCommentInfo}>
             <img src={"사람아이콘"} alt="" />
             <input
-              className={styles.input}
-              placeholder={"댓글 내용을 작성해 주세요"}
-              //   action=""
+              type="text"
+              className={styles.newUserNickname}
+              placeholder="댓글 닉네임"
+              onChange={onNicknameChangeHandler}
+              value={userNickname}
             />
           </div>
+          <input
+            className={styles.input}
+            placeholder={"댓글 내용을 작성해 주세요"}
+            onChange={onContentChangeHandler}
+            value={content}
+          />
         </form>
-        <button className={styles.submit}>댓글 작성하기</button>
+        <button className={styles.submit} onClick={onSubmit}>
+          댓글 작성하기
+        </button>
       </div>
     </div>
   );
