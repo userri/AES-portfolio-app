@@ -54,7 +54,7 @@ const Careers = () => {
                   {career.companies?.company_name ?? ""}
                 </div>
                 <div className={styles.companyDuration}>
-                  {career.start_date} - {career.end_date ?? "(재직 중)"}`
+                  {career.start_date} - {career.end_date ?? "(재직 중)"}
                 </div>
                 <div className={styles.companyIntro}>
                   {career.companies?.intro ?? ""}
@@ -83,7 +83,7 @@ const Careers = () => {
                             {project.title}
                           </div>
                         </div>
-                        <div className={styles.duration}>
+                        <div className={styles.projectDuration}>
                           {project.duration}
                         </div>
                         <div className={styles.projectSummary}>

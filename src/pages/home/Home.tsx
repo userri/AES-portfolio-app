@@ -2,9 +2,9 @@ import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Archiving from "./sections/Archiving";
 import Projects from "./sections/Projects";
-import Career from "./sections/Career";
 import Footer from "../../widgets/footer/Footer";
 import Intro from "./sections/Intro";
+import Careers from "./sections/Careers";
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
       <Skills />
       <Archiving />
       <Projects />
-      <Career />
+      <Careers />
       <Footer />
     </div>
   );

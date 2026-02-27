@@ -1,5 +1,5 @@
 import styles from "../../style/Intro.module.css";
-const Header = () => {
+const Intro = () => {
   return (
     <div className={styles.body}>
       <div className={styles.header}>
@@ -22,4 +22,4 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
+export default Intro;
