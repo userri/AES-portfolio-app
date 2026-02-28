@@ -6,6 +6,7 @@ import type { Project } from "../../../types/Project";
 import { supabase } from "../../../api/supabase";
 import readingGlass from "../../../assets/icon/돋보기.png";
 import SkillTag from "../../../components/ui/SkillTag";
+import { Link } from "react-router-dom";
 const Projects = () => {
   const {
     data: projects = [],
@@ -59,15 +60,16 @@ const Projects = () => {
       </div>
       <div className={styles.skills}>
         {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            iconImg={project.logo_url}
-            memberCnt={project.member_count}
-            title={project.title}
-            serviceLink={project.service_link}
-            // project_skills를 string 배열로 바꿔서 전달하기
-            skills={project.project_skills.map((item) => item.skills.name)}
-          />
+          <Link to={`/project/${project.slug}`} key={project.id}>
+            <ProjectCard
+              iconImg={project.logo_url}
+              memberCnt={project.member_count}
+              title={project.title}
+              serviceLink={project.service_link}
+              // project_skills를 string 배열로 바꿔서 전달하기
+              skills={project.project_skills.map((item) => item.skills.name)}
+            />
+          </Link>
         ))}
       </div>
     </div>

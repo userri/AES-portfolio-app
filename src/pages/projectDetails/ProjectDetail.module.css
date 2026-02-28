@@ -40,7 +40,8 @@
 }
 
 .mdBox {
-  height: 100px;
+  min-height: 100px;
+  height: fit-content;
   border: 1px solid rgb(194, 194, 194);
 }
 

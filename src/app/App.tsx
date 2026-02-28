@@ -12,6 +12,7 @@ function App() {
           <Route path="/project-detail" element={<ProjectDetail />} />
           <Route path="/project-detail-md" element={<ProjectDetailContent />} />
           <Route path="/" element={<Home />} />
+          <Route path="/project/:slug" element={<ProjectDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

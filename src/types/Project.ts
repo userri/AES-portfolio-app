@@ -7,6 +7,9 @@ export interface Project {
   end_date: string;
   service_link: string;
   logo_url: string;
+  md_url: string;
+  slug: string;
+
   created_at: string;
   updated_at: string;
 

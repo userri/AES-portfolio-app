@@ -7,8 +7,48 @@ import CommentBox from "../../components/ui/CommentBox";
 import CommentForm from "../../components/ui/CommentForm";
 import icon from "../../assets/icon/오토에버스쿨 1.png";
 import back from "../../assets/icon/calendar.png";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 const ProjectDetail = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [projectId, setProjectId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      if (!slug) {
+        setContent("");
+        setLoading(false);
+        return;
+      }
+      try {
+        const { data, error } = await supabase
+          .from("projects")
+          .select("id, slug")
+          .eq("slug", slug)
+          .single();
+
+        if (error || !data?.slug) throw new Error("Not Found");
+
+        setProjectId(data.id);
+
+        const response = await fetch(
+          `https://jownbnfgeguvahsmpwsb.supabase.co/storage/v1/object/public/md/${slug}.md`,
+        );
+        if (!response.ok) throw new Error("Not Found");
+        const text = await response.text();
+        setContent(text);
+      } catch {
+        setContent("");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProject();
+  }, [slug]);
   const {
     data: comments = [],
     isLoading,
@@ -19,17 +59,18 @@ const ProjectDetail = () => {
       const { data, error } = await supabase
         .from("comments")
         .select("*")
-        // .eq() 현재 포스트에 해당하는 댓글들을 가져와야 함. 근데 slug로할지? 연결된 project의 id로 할지?
+        .eq("project_id", projectId)
         .order("created_at");
 
       if (error) throw error;
       return (data ?? []) as Comment[];
     },
+    enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
 
-  // 댓글추가
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
+
   return (
     <div className={styles.body}>
       <div className={styles.header}>
@@ -41,7 +82,9 @@ const ProjectDetail = () => {
         <img src={back} className={styles.back}></img>
       </div>
       <div className={styles.contents}>
-        <div className={styles.mdBox}></div>
+        <div className={styles.mdBox}>
+          <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
         <div className={styles.commentBox}>
           <div className={styles.commentsInfo}>
             <img alt="" />
@@ -51,9 +94,8 @@ const ProjectDetail = () => {
           </div>
           <div className={styles.writtenCommentBox}>
             {comments.map((comment, index) => (
-              <div className={styles.writtenComments}>
+              <div key={comment.id} className={styles.writtenComments}>
                 <CommentBox
-                  key={comment.id}
                   userNickname={comment.user_nickname}
                   createdAt={comment.created_at}
                   content={comment.content}
@@ -64,7 +106,7 @@ const ProjectDetail = () => {
               </div>
             ))}
           </div>
-          <CommentForm projectId={1} />
+          <CommentForm projectId={projectId || 0} />
         </div>
       </div>
     </div>
