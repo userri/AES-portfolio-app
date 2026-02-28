@@ -9,14 +9,6 @@ const CommentForm = ({ projectId }: { projectId: number }) => {
   // main.tsx에서 선언했던거 가져오기
   const queryClient = useQueryClient();
 
-  // 핸들러 하나로 상태 관리
-  // 그냥 e로만 해도 되긴 하지만 event 타입 명시
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    // name에 맞는 value만 업데이트 됨
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
   // 데이터 바뀔 때마다 상태도 최신화하게 요청
   const { mutate } = useMutation({
     // supabase의 insert 함수는 async로 감싸야함

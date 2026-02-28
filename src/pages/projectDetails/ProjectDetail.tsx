@@ -68,7 +68,7 @@ const ProjectDetail = () => {
     enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
 
-  if (isLoading) return <p>로딩 중...</p>;
+  if (isLoading || loading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
 
   return (
