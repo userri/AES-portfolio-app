@@ -10,6 +10,7 @@ import back from "../../assets/icon/calendar.png";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import dayjs from "dayjs";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -97,7 +98,9 @@ const ProjectDetail = () => {
               <div key={comment.id} className={styles.writtenComments}>
                 <CommentBox
                   userNickname={comment.user_nickname}
-                  createdAt={comment.created_at}
+                  createdAt={dayjs(comment.created_at).format(
+                    "YYYY-MM-DD HH:mm",
+                  )}
                   content={comment.content}
                 />
                 {index !== comments.length - 1 && (
