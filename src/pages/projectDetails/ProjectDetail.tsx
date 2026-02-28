@@ -31,7 +31,7 @@ const ProjectDetail = () => {
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
   return (
-    <div>
+    <div className={styles.body}>
       <div className={styles.header}>
         <div className={styles.headerGroup}>
           <img src={icon} alt="" />
@@ -64,9 +64,7 @@ const ProjectDetail = () => {
               </div>
             ))}
           </div>
-          <div className={styles.newCommentBox}>
-            <CommentForm projectId={1} />
-          </div>
+          <CommentForm projectId={1} />
         </div>
       </div>
     </div>

@@ -1,3 +1,7 @@
+.body {
+  max-width: 1440px;
+}
+
 .header {
   font-family: "Noto Sans";
   height: fit-content;
@@ -53,6 +57,7 @@
 }
 
 .writtenCommentBox {
+  max-width: 100%;
   border: 1px solid gray;
   border-radius: 10px;
   padding: 32px;
@@ -62,12 +67,11 @@
 }
 
 .writtenComments {
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-
-.newCommentBox {}
 
 .line {
   width: 100%;

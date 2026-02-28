@@ -1,4 +1,5 @@
 .commentItem {
+    max-width: 100%;
     height: fit-content;
     font-family: "Noto Sans";
     display: flex;
@@ -20,9 +21,11 @@
 }
 
 .createdAt {
+    max-width: 100%;
     font-size: 18px;
     font-weight: 400;
     color: rgb(164, 164, 164);
+    white-space: pre-wrap;
 }
 
 .contentBox {
