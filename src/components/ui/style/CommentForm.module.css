@@ -1,0 +1,65 @@
+.form {
+    font-family: "Noto Sans";
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1440px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-content: center;
+}
+
+.nicknameBox {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-content: center;
+}
+
+.nickname {
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    margin-top: 4px;
+}
+
+.nicknameLine {
+    min-width: 100px;
+    min-height: 1px;
+    background-color: gray;
+}
+
+.content {
+    color: rgb(101, 100, 100);
+    font-weight: 400;
+    background-color: rgb(220, 220, 220);
+    font-size: 20px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.submit {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: fit-content;
+}
+
+.submitBtn {
+    width: fit-content;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    background: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: orange;
+}

@@ -1,0 +1,45 @@
+.commentItem {
+    height: fit-content;
+    font-family: "Noto Sans";
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.userNickname {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.createdAt {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(164, 164, 164);
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+}
+
+.content {
+    height: auto;
+    font-size: 20px;
+}
+
+.contentHeader {
+    min-width: 1.5px;
+    min-height: 100%;
+    background-color: rgb(176, 176, 176);
+}

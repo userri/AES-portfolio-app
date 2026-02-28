@@ -5,6 +5,8 @@ import { supabase } from "../../api/supabase";
 // import { useState } from "react";
 import CommentBox from "../../components/ui/CommentBox";
 import CommentForm from "../../components/ui/CommentForm";
+import icon from "../../assets/icon/오토에버스쿨 1.png";
+import back from "../../assets/icon/calendar.png";
 
 const ProjectDetail = () => {
   const {
@@ -30,26 +32,41 @@ const ProjectDetail = () => {
   if (error) return <p>에러가 발생했습니다.</p>;
   return (
     <div>
-      <div className={styles.mdBox}></div>
-      <div className={styles.commentBox}>
-        <div className={styles.commentsInto}>
-          <img alt="" />
-          <div>댓글 0개</div>
-          <img src={"하트아이콘"} alt="" />
-          <div>좋아요 17개</div>
+      <div className={styles.header}>
+        <div className={styles.headerGroup}>
+          <img src={icon} alt="" />
+          <div className={styles.headerTitle}>IT 엘도라도</div>
+          <div className={styles.headerSubtitle}>지식의 보물창고</div>
         </div>
-        <div className={styles.writtenComments}>
-          {comments.map((comment) => (
-            <CommentBox
-              key={comment.id}
-              userNickname={comment.user_nickname}
-              createdAt={comment.created_at}
-              content={comment.content}
-            />
-          ))}
-        </div>
-        <div className={styles.newCommentBox}>
-          <CommentForm projectId={1} />
+        <img src={back} className={styles.back}></img>
+      </div>
+      <div className={styles.contents}>
+        <div className={styles.mdBox}></div>
+        <div className={styles.commentBox}>
+          <div className={styles.commentsInfo}>
+            <img alt="" />
+            <div>댓글 0개</div>
+            <img src={"하트아이콘"} alt="" />
+            <div>좋아요 17개</div>
+          </div>
+          <div className={styles.writtenCommentBox}>
+            {comments.map((comment, index) => (
+              <div className={styles.writtenComments}>
+                <CommentBox
+                  key={comment.id}
+                  userNickname={comment.user_nickname}
+                  createdAt={comment.created_at}
+                  content={comment.content}
+                />
+                {index !== comments.length - 1 && (
+                  <div className={styles.line}></div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className={styles.newCommentBox}>
+            <CommentForm projectId={1} />
+          </div>
         </div>
       </div>
     </div>

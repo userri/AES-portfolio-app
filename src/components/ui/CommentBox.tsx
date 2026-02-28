@@ -8,9 +8,14 @@ interface CommentBoxProps {
 const CommentBox = ({ userNickname, createdAt, content }: CommentBoxProps) => {
   return (
     <div className={styles.commentItem}>
-      <div className={styles.userNickname}>{userNickname}</div>
-      <div className={styles.commentCreatedDate}>{createdAt}</div>
-      <div className={styles.content}>{content}</div>
+      <div className={styles.info}>
+        <div className={styles.userNickname}>{userNickname}</div>
+        <div className={styles.createdAt}>{createdAt}</div>
+      </div>
+      <div className={styles.contentBox}>
+        <div className={styles.contentHeader}></div>
+        <div className={styles.content}>{content}</div>
+      </div>
     </div>
   );
 };

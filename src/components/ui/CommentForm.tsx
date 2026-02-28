@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { supabase } from "../../api/supabase";
+import styles from "./style/CommentForm.module.css";
+import person from "../../assets/icon/person.png";
 
 const CommentForm = ({ projectId }: { projectId: number }) => {
   const [form, setForm] = useState({ nickname: "", content: "" });
@@ -54,16 +56,24 @@ const CommentForm = ({ projectId }: { projectId: number }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="nickname"
-        value={form.nickname}
-        onChange={(e) =>
-          setForm((prev) => ({ ...prev, nickname: e.target.value }))
-        }
-        placeholder="댓글 닉네임"
-      />
-      <input
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.info}>
+        <img src={person} alt="" />
+        <div className={styles.nicknameBox}>
+          <input
+            className={styles.nickname}
+            name="nickname"
+            value={form.nickname}
+            onChange={(e) =>
+              setForm((prev) => ({ ...prev, nickname: e.target.value }))
+            }
+            placeholder="댓글 닉네임"
+          />
+          <div className={styles.nicknameLine}></div>
+        </div>
+      </div>
+      <textarea
+        className={styles.content}
         name="content"
         value={form.content}
         onChange={(e) =>
@@ -71,7 +81,11 @@ const CommentForm = ({ projectId }: { projectId: number }) => {
         }
         placeholder="댓글 내용을 작성해주세요"
       />
-      <button type="submit">댓글 작성하기</button>
+      <div className={styles.submit}>
+        <button className={styles.submitBtn} type="submit">
+          댓글 작성하기
+        </button>
+      </div>
     </form>
   );
 };
