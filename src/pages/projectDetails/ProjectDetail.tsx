@@ -5,12 +5,13 @@ import { supabase } from "../../api/supabase";
 // import { useState } from "react";
 import CommentBox from "../../components/ui/CommentBox";
 import CommentForm from "../../components/ui/CommentForm";
-import icon from "../../assets/icon/오토에버스쿨 1.png";
-import back from "../../assets/icon/calendar.png";
+// import icon from "../../assets/icon/오토에버스쿨 1.png";
+// import back from "../../assets/icon/calendar.png";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
+import ProjectDetailHeader from "../../widgets/projectDetailHeader/ProjectDetailHeader";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -74,14 +75,7 @@ const ProjectDetail = () => {
 
   return (
     <div className={styles.body}>
-      <div className={styles.header}>
-        <div className={styles.headerGroup}>
-          <img src={icon} alt="" />
-          <div className={styles.headerTitle}>IT 엘도라도</div>
-          <div className={styles.headerSubtitle}>지식의 보물창고</div>
-        </div>
-        <img src={back} className={styles.back}></img>
-      </div>
+      <ProjectDetailHeader />
       <div className={styles.contents}>
         <div className={styles.mdBox}>
           <ReactMarkdown>{content}</ReactMarkdown>

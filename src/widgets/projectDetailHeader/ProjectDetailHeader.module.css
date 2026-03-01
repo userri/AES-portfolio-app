@@ -1,0 +1,36 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 1000;
+
+    font-family: "Noto Sans";
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 40px;
+    background: white;
+    box-shadow: 0 0 15px #7b7b7b;
+}
+
+.back {
+    height: 30px;
+    margin-left: 10px;
+    display: block;
+}
+
+.headerTitle {
+    min-width: fit-content;
+    font-size: 18px;
+    font-weight: 900;
+    margin-left: 20px;
+}
+
+.headerSubtitle {
+    min-width: fit-content;
+    font-size: 16px;
+    margin-left: 20px;
+}

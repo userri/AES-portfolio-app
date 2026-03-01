@@ -2,41 +2,12 @@
   max-width: 1440px;
 }
 
-.header {
-  font-family: "Noto Sans";
-  height: fit-content;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  padding: 20px 40px;
-  background: white;
-  box-shadow: 0 0 15px #7b7b7b;
-}
-
-.headerGroup {
-  display: flex;
-  flex-direction: row;
-  align-content: flex-start;
-  gap: 20px;
-}
-
-.headerTitle {
-  min-width: fit-content;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.headerSubtitle {
-  min-width: fit-content;
-  font-size: 16px;
-}
-
 .contents {
   display: flex;
   flex-direction: column;
   padding: 40px;
   gap: 40px;
+  margin-top: 80px;
 }
 
 .mdBox {
