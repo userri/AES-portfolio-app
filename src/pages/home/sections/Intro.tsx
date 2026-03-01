@@ -5,7 +5,9 @@ const Intro = () => {
     <div className={styles.body}>
       <Header />
       <div className={styles.name}>-임유리-</div>
-      <div className={styles.name}>백엔드 개발자 포트폴리오</div>
+      <div className={styles.name}>
+        <span>백엔드</span> <span>개발자</span> <span>포트폴리오</span>
+      </div>
       <div className={styles.line}></div>
       <div className={styles.intro}>안녕하세요.</div>
       <div className={styles.intro}>본질에 충실한 백엔드 개발자</div>
