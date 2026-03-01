@@ -8,9 +8,11 @@ import SkillTag from "../../../components/ui/SkillTag";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import SectionTitle from "../../../components/ui/SectionTitle";
+
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  // 프로젝트 데이터 가져오기
   const {
     data: projects = [],
     isLoading,
@@ -33,12 +35,9 @@ const Projects = () => {
     },
   });
 
-  if (isLoading) return <p>로딩 중...</p>;
-  if (error) return <p>에러가 발생했습니다.</p>;
-
+  // 검색 가능한 기술 스택 생성
   const searchSkills = useMemo(() => {
     const skillSet = new Set<string>();
-
     projects.forEach((project) => {
       project.project_skills?.forEach((ps) => {
         if (ps.skills?.name) {
@@ -49,18 +48,21 @@ const Projects = () => {
     return Array.from(skillSet).sort();
   }, [projects]);
 
+  // 검색어에 따라 필터링된 프로젝트 생성
   const filteredProjects = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase().trim();
     if (!lowerSearch) return projects;
     return projects.filter((project) => {
       const hasTitle = project.title.toLowerCase().includes(lowerSearch);
-
       const hasSkill = project.project_skills?.some((ps) =>
         ps.skills?.name.toLowerCase().includes(lowerSearch),
       );
       return hasTitle || hasSkill;
     });
   }, [searchTerm, projects]);
+
+  if (isLoading) return <p>로딩 중...</p>;
+  if (error) return <p>에러가 발생했습니다.</p>;
 
   return (
     <div className={styles.body}>
@@ -100,7 +102,6 @@ const Projects = () => {
                 memberCnt={project.member_count}
                 title={project.title}
                 serviceLink={project.service_link}
-                // project_skills를 string 배열로 바꿔서 전달하기
                 skills={project.project_skills.map((item) => item.skills.name)}
               />
             </Link>
@@ -112,4 +113,5 @@ const Projects = () => {
     </div>
   );
 };
+
 export default Projects;
