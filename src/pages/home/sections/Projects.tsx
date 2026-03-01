@@ -6,9 +6,11 @@ import { supabase } from "../../../api/supabase";
 import readingGlass from "../../../assets/icon/돋보기.png";
 import SkillTag from "../../../components/ui/SkillTag";
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import SectionTitle from "../../../components/ui/SectionTitle";
 const Projects = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const {
     data: projects = [],
     isLoading,
@@ -47,40 +49,65 @@ const Projects = () => {
     return Array.from(skillSet).sort();
   }, [projects]);
 
+  const filteredProjects = useMemo(() => {
+    const lowerSearch = searchTerm.toLowerCase().trim();
+    if (!lowerSearch) return projects;
+    return projects.filter((project) => {
+      const hasTitle = project.title.toLowerCase().includes(lowerSearch);
+
+      const hasSkill = project.project_skills?.some((ps) =>
+        ps.skills?.name.toLowerCase().includes(lowerSearch),
+      );
+      return hasTitle || hasSkill;
+    });
+  }, [searchTerm, projects]);
+
   return (
     <div className={styles.body}>
       <SectionTitle title="PROJECTS" />
-      <form className={styles.search} action="">
+      <div className={styles.searchBox}>
         <input
-          className={styles.placeholder}
+          className={styles.search}
           type="text"
-          placeholder="검색어를 입력하세요"
+          placeholder="프로젝트명 또는 기술 스택 검색"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <img className={styles.icon} src={readingGlass} alt="" />
-      </form>
+        <img className={styles.icon} src={readingGlass} alt="검색" />
+      </div>
       <div className={styles.searchTags}>
         {searchSkills.map((skill) => (
-          <SkillTag
+          <div
             key={skill}
-            text={skill}
-            bgColor="black"
-            textColor="white"
-          />
+            style={{ cursor: "pointer" }}
+            onClick={() => setSearchTerm(skill)}
+          >
+            <SkillTag
+              key={skill}
+              text={skill}
+              bgColor="black"
+              textColor="white"
+            />
+          </div>
         ))}
       </div>
       <div className={styles.skills}>
-        {projects.map((project) => (
-          <Link to={`/project/${project.slug}`} key={project.id}>
-            <ProjectCard
-              iconImg={project.logo_url}
-              memberCnt={project.member_count}
-              title={project.title}
-              serviceLink={project.service_link}
-              // project_skills를 string 배열로 바꿔서 전달하기
-              skills={project.project_skills.map((item) => item.skills.name)}
-            />
-          </Link>
-        ))}
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project) => (
+            <Link to={`/project/${project.slug}`} key={project.id}>
+              <ProjectCard
+                iconImg={project.logo_url}
+                memberCnt={project.member_count}
+                title={project.title}
+                serviceLink={project.service_link}
+                // project_skills를 string 배열로 바꿔서 전달하기
+                skills={project.project_skills.map((item) => item.skills.name)}
+              />
+            </Link>
+          ))
+        ) : (
+          <p className={styles.noResult}>검색 결과가 없습니다.</p>
+        )}
       </div>
     </div>
   );
