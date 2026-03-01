@@ -7,12 +7,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px;
+  padding: 60px 20px;
 }
+
 .box {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
+  max-width: 1000px;
   height: fit-content;
   row-gap: 20px;
   pad: 50px;
@@ -23,7 +25,7 @@
 }
 
 .skillBox {
-  width: 100%;
+  width: fit-content;
   font-size: large;
   display: flex;
   flex-direction: row;
@@ -31,31 +33,54 @@
   align-items: center;
   gap: 10px;
 }
+
 .category {
   width: 160px;
   font-size: 20px;
   margin: 10px;
 }
+
 .skillContents {
   display: flex;
   /* 자리가 없으면 다음 줄로 */
   flex-wrap: wrap;
-  width: 600px;
-  /* 화면 좁아지면 줄어들게 */
-  max-width: 1200px;
   gap: 10px;
   height: fit-content;
+  /* 남은 공간 모두 차지하게 */
+  flex: 1;
+  width: auto;
 }
+
 .iconTitle {
   display: flex;
   justify-content: center;
+  min-width: 150px;
 }
+
 .icon {
   width: 30px;
   object-fit: cover;
 }
-@media (max-width: 50px) {
-  .skillContents {
-    grid-template-columns: 1fr;
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .skillBox {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .iconTitle {
+    justify-content: start;
+    min-width: unset;
+    padding-bottom: 5px;
+    width: 100%;
+  }
+
+  .skillBox {
+    align-items: start;
+  }
+
+  .box {
+    padding: 20px;
   }
 }
