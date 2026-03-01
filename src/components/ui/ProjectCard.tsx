@@ -1,6 +1,7 @@
 import SkillTag from "./SkillTag";
 import styles from "./style/ProjectCard.module.css";
 import iconImgSample from "../../assets/icon/black-link.webp";
+import type React from "react";
 
 interface ProjectCardProps {
   iconImg?: string;
@@ -21,6 +22,9 @@ const ProjectCard = ({
   start_date = "2026.01.01",
   end_date = "2026.01.02",
 }: ProjectCardProps) => {
+  const handleLinkClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
   return (
     <div className={styles.body}>
       <div className={styles.top}>
@@ -28,9 +32,15 @@ const ProjectCard = ({
         <span className={styles.memberCount}>{memberCnt}인 프로젝트</span>
       </div>
       <div className={styles.title}>{title}</div>
-      <div className={styles.serviceLink}>
-        <div className={styles.serviceLink}>{serviceLink}</div>
-      </div>
+      <a
+        href={serviceLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleLinkClick}
+        className={styles.serviceLink}
+      >
+        {serviceLink}
+      </a>
       <div className={styles.line}></div>
       <div className={styles.subtitle}>프로젝트 한줄소개</div>
       <div className={styles.description}>- 프로젝트 설명 1</div>
