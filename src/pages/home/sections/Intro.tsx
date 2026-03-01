@@ -1,17 +1,9 @@
+import Header from "../../../widgets/header/Header";
 import styles from "../../style/Intro.module.css";
 const Intro = () => {
   return (
     <div className={styles.body}>
-      <div className={styles.header}>
-        <div className={styles.title}>IYR's Portfolio</div>
-        <div className={styles.nav}>
-          <div>About me</div>
-          <div>Skills</div>
-          <div>Archiving</div>
-          <div>Projects</div>
-          <div>Career</div>
-        </div>
-      </div>
+      <Header />
       <div className={styles.name}>-임유리-</div>
       <div className={styles.name}>백엔드 개발자 포트폴리오</div>
       <div className={styles.line}></div>

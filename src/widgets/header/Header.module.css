@@ -1,0 +1,48 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    align-items: center;
+    padding: 14px 30px;
+    padding-right: 0 50px;
+    justify-content: space-between;
+    height: 100px;
+    z-index: 1000;
+
+    /* 부드럽게 변하게 */
+    transition: all 0.3s ease;
+    background-color: transparent;
+    color: #ffffffb2;
+}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 0.91);
+    height: 80px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.632);
+    color: black;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    font-size: 24px;
+}
+
+.navItem {
+    color: inherit;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3 ease;
+}

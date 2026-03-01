@@ -6,6 +6,7 @@ import Footer from "../../widgets/footer/Footer";
 import Intro from "./sections/Intro";
 import Careers from "./sections/Careers";
 // import { Link } from "react-router-dom";
+import styles from "../style/Home.module.css";
 
 const Home = () => {
   return (
@@ -15,11 +16,21 @@ const Home = () => {
         <button>프로젝트 상세 화면으로 이동</button>
       </Link>{" "} */}
       <Intro />
-      <About />
-      <Skills />
-      <Archiving />
-      <Projects />
-      <Careers />
+      <section className={styles.section} id="about">
+        <About />
+      </section>
+      <section className={styles.section} id="skills">
+        <Skills />
+      </section>
+      <section className={styles.section} id="archiving">
+        <Archiving />
+      </section>
+      <section className={styles.section} id="projects">
+        <Projects />
+      </section>
+      <section className={styles.section} id="careers">
+        <Careers />
+      </section>
       <Footer />
     </div>
   );
