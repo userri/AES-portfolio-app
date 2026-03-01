@@ -1,5 +1,4 @@
 import ProjectCard from "../../../components/ui/ProjectCard";
-import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Projects.module.css";
 import { useQuery } from "@tanstack/react-query";
 import type { Project } from "../../../types/Project";
@@ -7,6 +6,8 @@ import { supabase } from "../../../api/supabase";
 import readingGlass from "../../../assets/icon/돋보기.png";
 import SkillTag from "../../../components/ui/SkillTag";
 import { Link } from "react-router-dom";
+import { useMemo } from "react";
+import SectionTitle from "../../../components/ui/SectionTitle";
 const Projects = () => {
   const {
     data: projects = [],
@@ -33,9 +34,18 @@ const Projects = () => {
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
 
-  const skills = ["JAVA", "JavaScript", "SpringBoot", "JPA", "MySQL"];
+  const searchSkills = useMemo(() => {
+    const skillSet = new Set<string>();
 
-  // TODO: project에서 기술 추출해서 set으로 만들기
+    projects.forEach((project) => {
+      project.project_skills?.forEach((ps) => {
+        if (ps.skills?.name) {
+          skillSet.add(ps.skills.name);
+        }
+      });
+    });
+    return Array.from(skillSet).sort();
+  }, [projects]);
 
   return (
     <div className={styles.body}>
@@ -49,7 +59,7 @@ const Projects = () => {
         <img className={styles.icon} src={readingGlass} alt="" />
       </form>
       <div className={styles.searchTags}>
-        {skills.map((skill) => (
+        {searchSkills.map((skill) => (
           <SkillTag
             key={skill}
             text={skill}

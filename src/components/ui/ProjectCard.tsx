@@ -29,7 +29,6 @@ const ProjectCard = ({
       </div>
       <div className={styles.title}>{title}</div>
       <div className={styles.serviceLink}>
-        <img src={iconImg} alt="" />
         <div className={styles.serviceLink}>{serviceLink}</div>
       </div>
       <div className={styles.line}></div>

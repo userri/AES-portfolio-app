@@ -6,6 +6,7 @@
   align-items: center;
   margin: 60px;
 }
+
 .skills {
   width: 300px;
   display: grid;
@@ -13,11 +14,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
+
 @media (max-width: 1000px) {
   .skills {
     grid-template-columns: 1fr;
   }
 }
+
 .search {
   height: fit-content;
   width: 500px;
@@ -31,6 +34,7 @@
   align-content: center;
   gap: 10px;
 }
+
 .placeholder {
   font-size: 20px;
   width: 100%;
@@ -38,6 +42,7 @@
   border: none;
   /* color: black; */
 }
+
 .icon {
   height: 24px;
 }
@@ -47,4 +52,10 @@
   flex-direction: row;
   margin-bottom: 40px;
   gap: 20px;
+}
+
+.searchTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

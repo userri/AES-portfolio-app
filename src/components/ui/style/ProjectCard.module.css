@@ -11,12 +11,14 @@
   gap: 8px;
   box-shadow: 0 0 15px #7b7b7b;
 }
+
 .top {
   width: 100%;
   flex-direction: row;
   display: flex;
   justify-content: space-between;
 }
+
 .memberCount {
   background-color: rgb(214, 139, 48);
   padding: 8px 10px;
@@ -26,17 +28,20 @@
   border-radius: 8px;
   height: fit-content;
 }
+
 .icon {
   width: 70px;
   height: 70px;
   border-radius: 8px;
   margin-bottom: 10px;
 }
+
 .title {
   font-size: 24px;
   font-weight: bold;
   -webkit-text-stroke: 0.5px black;
 }
+
 .serviceLink {
   align-items: center;
   display: flex;
@@ -44,15 +49,18 @@
   font-size: 14px;
   font-weight: normal;
 }
+
 .serviceLink img {
   height: 14px;
   margin: 5px;
 }
+
 .subtitle {
   font-size: 18px;
   font-weight: bold;
   -webkit-text-stroke: 0.5px black;
 }
+
 .description {
   font-size: 14px;
   font-weight: normal;
@@ -62,7 +70,9 @@
   width: 100%;
   min-height: 1.5px;
   background-color: black;
+  z-index: 1000;
 }
+
 .skills {
   font-size: 14px;
   display: flex;
@@ -71,6 +81,7 @@
   gap: 10px;
   margin-bottom: 10px;
 }
+
 .duration {
   width: 100%;
   display: flex;
