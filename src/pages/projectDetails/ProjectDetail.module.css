@@ -13,9 +13,30 @@
 .mdBox {
   min-height: 100px;
   height: fit-content;
-  padding: 30px;
+  padding: 40px 30px;
   background-color: white;
   border: 2px solid rgb(194, 194, 194);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* 불릿 안 삐져나오게 */
+.mdBox :global(.markdown-body) ul {
+  padding-left: 100rem;
+  list-style-position: inside;
+  margin-left: 0 !important;
+}
+
+.mdBox :global(.markdown-body) ol {
+  padding-left: 100rem;
+  list-style-position: inside;
+  margin-left: 0 !important;
+}
+
+.mdBox :global(.markdown-body) li {
+  padding-left: 100rem;
+  list-style-position: inside;
+  margin-left: 0 !important;
 }
 
 .commentBox {
@@ -33,7 +54,7 @@
 .writtenCommentBox {
   max-width: 100%;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 32px;
   display: flex;
   flex-direction: column;

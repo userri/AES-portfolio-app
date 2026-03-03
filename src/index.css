@@ -3,14 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family:
     "Noto Sans" -apple-system,
+    sans-serif,
     BlinkMacSystemFont,
     "Segoe UI",
-    "Roboto",
-    sans-serif;
+    "Roboto";
   line-height: 1.6;
   color: #333;
   background-color: #f5f5f5;

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
 import ProjectDetailHeader from "../../widgets/projectDetailHeader/ProjectDetailHeader";
+import "./MarkdownModule.css";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -77,7 +78,7 @@ const ProjectDetail = () => {
     <div className={styles.body}>
       <ProjectDetailHeader />
       <div className={styles.contents}>
-        <div className={styles.mdBox}>
+        <div className={`${styles.mdBox} markdown markdown-body`}>
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         <div className={styles.commentBox}>
