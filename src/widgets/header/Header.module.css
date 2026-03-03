@@ -1,47 +1,143 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 14px 30px;
-    padding-right: 0 50px;
-    justify-content: space-between;
-    height: 100px;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 30px;
+  padding-right: 0 50px;
+  justify-content: space-between;
+  min-height: 80px;
+  z-index: 5000;
 
-    /* 부드럽게 변하게 */
-    transition: all 0.3s ease;
-    background-color: transparent;
-    color: #ffffffb2;
+  /* 부드럽게 변하게 */
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: #ffffffb2;
 }
 
 .scrolled {
-    background-color: rgba(255, 255, 255, 0.91);
-    height: 80px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.632);
-    color: black;
+  background-color: rgba(255, 255, 255, 1);
+  min-height: 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.632);
+  color: black;
+}
+.header:not(.scrolled) .hamburger {
+  color: #ffffffb2;
 }
 
 .title {
-    font-size: 32px;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .nav {
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  font-size: 24px;
+  transition: color 0.1 ease;
 }
 
 .navItem {
-    color: inherit;
-    margin-left: 20px;
+  color: inherit;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: color 0.3 ease;
+}
+.hamburger {
+  /* 기본값 안보임 */
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001;
+}
+.bar {
+  width: 24px;
+  height: 2px;
+  background-color: currentColor; /*부모글자색 따라감*/
+  transition: all 0.3s ease;
+}
+
+/* -----드롭다운 구현----- */
+@media (max-width: 850px) {
+  /* 버튼 나타남 */
+  .hamburger {
+    display: flex;
+  }
+  /* 버튼 열릴때 빙글 돌면서 나타남 */
+  .bar1 {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .bar2 {
+    opacity: 0;
+  }
+  .bar3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    /* 평소엔 숨김 */
+    opacity: 0;
+    /* overflow: hidden; */
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .navActive {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    padding: 10px 0;
+    max-height: none;
+  }
+  .navItem {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    /* 기존 마진 제거 */
+    margin-left: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .navItem:last-child {
+    border-bottom: none;
+  }
+  .menuOpen .bar {
+    background-color: black;
+  }
+}
+
+/* pc버전 nav 유지 */
+@media (min-width: 850px) {
+  .nav {
+    display: flex;
+    gap: 32px;
+  }
+  .navItem {
+    font-size: 20px;
     font-weight: bold;
-    transition: color 0.3 ease;
+  }
 }
