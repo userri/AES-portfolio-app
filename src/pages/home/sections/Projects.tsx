@@ -5,7 +5,6 @@ import type { Project } from "../../../types/Project";
 import { supabase } from "../../../api/supabase";
 import readingGlass from "../../../assets/icon/돋보기.png";
 import SkillTag from "../../../components/ui/SkillTag";
-import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import SectionTitle from "../../../components/ui/SectionTitle";
 
@@ -100,9 +99,7 @@ const Projects = () => {
       <div className={styles.skills}>
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
-            // <Link to={`/project/${project.slug}`} key={project.id}>
             <ProjectCard key={project.id} project={project} />
-            // </Link>
           ))
         ) : (
           <p className={styles.noResult}>검색 결과가 없습니다.</p>

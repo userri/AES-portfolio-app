@@ -10,6 +10,16 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: 0 0 15px #7b7b7b;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer !important;
+}
+
+.body:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-color: black;
 }
 
 .top {
