@@ -49,12 +49,12 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
 }
 
 .intro {
-  font-size: 14px;
+  font-size: 20x;
   font-weight: 700;
 }
 
@@ -77,12 +77,12 @@
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .description {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
 }
 
@@ -120,5 +120,17 @@
   }
   .title {
     font-size: 20px;
+  }
+  .intro {
+    font-size: 16px;
+  }
+  .subtitle {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  .skills {
+    font-size: 10px;
   }
 }
