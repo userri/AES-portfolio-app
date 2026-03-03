@@ -5,7 +5,7 @@ import githubImg from "../../../assets/icon/github.png";
 const Archiving = () => {
   return (
     <div className={styles.body}>
-      <SectionTitle title="ARCHIVING" />
+      <SectionTitle title="ARCHIVING" white={true} />
       <div className={styles.boxes}>
         <div className={styles.box}>
           <img className={styles.img} src={githubImg} alt="" />

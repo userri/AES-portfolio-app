@@ -4,11 +4,16 @@ import chainImage from "../../assets/icon/black-link.webp";
 interface SectionTitleProps {
   img?: string;
   title: string;
+  white?: boolean;
 }
 
-const SectionTitle = ({ img = chainImage, title }: SectionTitleProps) => {
+const SectionTitle = ({
+  img = chainImage,
+  title,
+  white = false,
+}: SectionTitleProps) => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${white ? styles.whiteMode : ""}`}>
       <img className={styles.img} src={img} alt="링크 이미지" />
 
       <div className={styles.titleWrapper}>
