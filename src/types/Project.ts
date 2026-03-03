@@ -19,4 +19,9 @@ export interface Project {
       name: string;
     };
   }[];
+
+  project_details: {
+    project_detail_id: number;
+    summary: string;
+  }[];
 }

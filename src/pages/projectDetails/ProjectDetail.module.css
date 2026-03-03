@@ -13,7 +13,9 @@
 .mdBox {
   min-height: 100px;
   height: fit-content;
-  border: 1px solid rgb(194, 194, 194);
+  padding: 30px;
+  background-color: white;
+  border: 2px solid rgb(194, 194, 194);
 }
 
 .commentBox {

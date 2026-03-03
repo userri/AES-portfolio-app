@@ -2,67 +2,62 @@ import SkillTag from "./SkillTag";
 import styles from "./style/ProjectCard.module.css";
 import iconImgSample from "../../assets/icon/black-link.webp";
 import type React from "react";
+import type { Project } from "../../types/Project";
 
 interface ProjectCardProps {
-  iconImg?: string;
-  memberCnt?: number;
-  title: string;
-  serviceLink?: string;
-  skills?: string[];
-  start_date?: string;
-  end_date?: string;
+  project: Project;
 }
 
-const ProjectCard = ({
-  iconImg = iconImgSample,
-  memberCnt = 1,
-  title,
-  serviceLink = "https://github.com/userri/",
-  skills = ["Java", "JavaScript", "Spring Boot", "JPA", "MySQL", "Redis"],
-  start_date = "2026.01.01",
-  end_date = "2026.01.02",
-}: ProjectCardProps) => {
+const ProjectCard = ({ project }: ProjectCardProps) => {
   const handleLinkClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+  console.log(project.project_details);
   return (
     <div className={styles.body}>
       <div className={styles.top}>
-        <img className={styles.icon} src={iconImg} alt="아이콘" />
-        <span className={styles.memberCount}>{memberCnt}인 프로젝트</span>
+        <img
+          className={styles.icon}
+          src={project.logo_url || iconImgSample}
+          alt="아이콘"
+        />
+        <span className={styles.memberCount}>
+          {project.member_count}인 프로젝트
+        </span>
       </div>
-      <div className={styles.title}>{title}</div>
+      <div className={styles.title}>{project.title}</div>
+      <div className={styles.intro}>{project.project_intro}</div>
       <a
-        href={serviceLink}
+        href={project.service_link}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleLinkClick}
         className={styles.serviceLink}
       >
-        {serviceLink}
+        {project.service_link}
       </a>
       <div className={styles.line}></div>
       <div className={styles.subtitle}>프로젝트 한줄소개</div>
-      <div className={styles.description}>- 프로젝트 설명 1</div>
-      <div className={styles.description}>- 프로젝트 설명 2</div>
-      <div className={styles.description}>- 프로젝트 설명 3</div>
+      {project.project_details.map((detail) => (
+        <div className={styles.description}>{detail.summary}</div>
+      ))}
       <div className={styles.subtitle}>기술스택</div>
       <div className={styles.line}></div>
       <div></div>
       <div className={styles.skills}>
-        {skills.map((skill) => (
+        {project.project_skills.map((skill) => (
           <SkillTag
-            key={skill}
-            text={skill}
+            key={skill.skill_id}
+            text={skill.skills.name}
             bgColor="black"
             textColor="white"
           />
         ))}
       </div>{" "}
       <div className={styles.duration}>
-        <div>{start_date}</div>
+        <div>{project.start_date}</div>
         <div> ~ </div>
-        <div>{end_date}</div>{" "}
+        <div>{project.end_date}</div>{" "}
       </div>
     </div>
   );

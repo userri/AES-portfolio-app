@@ -20,7 +20,7 @@
 }
 
 .memberCount {
-  background-color: rgb(214, 139, 48);
+  background-color: rgb(234, 130, 10);
   padding: 8px 10px;
   color: white;
   font-size: 14px;
@@ -38,8 +38,12 @@
 
 .title {
   font-size: 24px;
-  font-weight: bold;
-  -webkit-text-stroke: 0.5px black;
+  font-weight: 700;
+}
+
+.intro {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .serviceLink {
@@ -47,7 +51,6 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: normal;
-  /* 변경사항 추적2 */
 }
 
 .serviceLink:hover {
@@ -63,8 +66,7 @@
 
 .subtitle {
   font-size: 18px;
-  font-weight: bold;
-  -webkit-text-stroke: 0.5px black;
+  font-weight: 700;
 }
 
 .description {

@@ -11,6 +11,7 @@ import SectionTitle from "../../../components/ui/SectionTitle";
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const ICON_MAP: Record<string, string> = {};
 
   // 프로젝트 데이터 가져오기
   const {
@@ -27,9 +28,13 @@ const Projects = () => {
           , project_skills(
           skill_id,
           skills(name)
-        )`,
+          ), project_details (
+          project_detail_id:id,
+          summary
+          )
+        `,
         )
-        .order("start_date", { ascending: false });
+        .order("start_date", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Project[];
     },
@@ -97,13 +102,7 @@ const Projects = () => {
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
             <Link to={`/project/${project.slug}`} key={project.id}>
-              <ProjectCard
-                iconImg={project.logo_url}
-                memberCnt={project.member_count}
-                title={project.title}
-                serviceLink={project.service_link}
-                skills={project.project_skills.map((item) => item.skills.name)}
-              />
+              <ProjectCard project={project} />
             </Link>
           ))
         ) : (
