@@ -79,6 +79,30 @@ const Projects = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <img className={styles.icon} src={readingGlass} alt="검색" />
+        {searchTerm.trim() && (
+          <button
+            type="button"
+            className={styles.deleteButton}
+            onClick={() => setSearchTerm("")}
+          >
+            <svg viewBox="0 0 24 24" fill="none" className={styles.delete}>
+              <path
+                d="M18 6 6 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="m6 6 12 12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
       </div>
       <div className={styles.searchTags}>
         {searchSkills.map((skill) => (
