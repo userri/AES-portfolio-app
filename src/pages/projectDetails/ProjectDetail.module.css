@@ -20,23 +20,22 @@
   overflow: hidden;
 }
 
-/* 불릿 안 삐져나오게 */
-.mdBox :global(.markdown-body) ul {
-  padding-left: 100rem;
-  list-style-position: inside;
-  margin-left: 0 !important;
+.progressBarContainer {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
 }
 
-.mdBox :global(.markdown-body) ol {
-  padding-left: 100rem;
-  list-style-position: inside;
-  margin-left: 0 !important;
-}
-
-.mdBox :global(.markdown-body) li {
-  padding-left: 100rem;
-  list-style-position: inside;
-  margin-left: 0 !important;
+.progressBar {
+  height: 100%;
+  background: linear-gradient(to right, #e0e0e0, #1c03ff);
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(255, 130, 10, 0.5);
 }
 
 .commentBox {

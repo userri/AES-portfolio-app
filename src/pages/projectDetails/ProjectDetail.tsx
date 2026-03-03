@@ -16,6 +16,24 @@ const ProjectDetail = () => {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [projectId, setProjectId] = useState<number | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // 스크롤 진행상황 표시
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight -
+        (document.scrollingElement?.clientHeight || 0);
+      const windowScroll = window.scrollY;
+      if (totalHeight > 0) {
+        setScrollProgress((windowScroll / totalHeight) * 100);
+      }
+    };
+    // 스크롤 이벤트 리스너
+    window.addEventListener("scroll", handleScroll);
+    // 클린업 함수: 컴포넌트가 사라질 때 이벤트 제거 (메모리 누수 방지)
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -74,6 +92,12 @@ const ProjectDetail = () => {
   return (
     <div className={styles.body}>
       <ProjectDetailHeader />
+      <div className={styles.progressBarContainer}>
+        <div
+          className={styles.progressBar}
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
       <div className={styles.contents}>
         <div className={`${styles.mdBox} markdown markdown-body`}>
           <ReactMarkdown>{content}</ReactMarkdown>

@@ -85,6 +85,7 @@
   flex-direction: row;
   height: fit-content;
   gap: 10px;
+  margin-bottom: 4px;
 }
 .titleHead {
   width: 5px;
