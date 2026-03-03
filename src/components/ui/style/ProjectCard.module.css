@@ -1,8 +1,10 @@
 .body {
   width: 460px;
+  max-width: calc(100vw-40px);
+
   height: fit-content;
   font-family: "Noto Sans";
-  padding: 25px 30px;
+  padding: 20px;
   color: black;
   background-color: white;
   border-radius: 10px;
@@ -110,4 +112,13 @@
   font-size: 14px;
   color: #8d8d8d;
   float: right;
+}
+@media (max-width: 480px) {
+  .body {
+    width: 100%;
+    padding: 15px;
+  }
+  .title {
+    font-size: 20px;
+  }
 }
