@@ -28,15 +28,28 @@
   gap: 10px;
   padding: 32px 28px;
 }
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.491);
+  border-color: black;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer !important;
+}
 .img {
   height: 100px;
   width: fit-content;
 }
 .link {
   font-size: 20px;
-  color: #487fff;
-
+  color: #007bff;
   font-weight: bolder;
+}
+.link:hover {
+  color: #007bff;
+  text-decoration: underline;
+  transform: translateY(-1px);
 }
 .description {
   font-weight: normal;
