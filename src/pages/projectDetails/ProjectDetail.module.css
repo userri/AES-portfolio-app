@@ -72,3 +72,8 @@
   height: 1px;
   background: rgb(205, 205, 205);
 }
+@media (max-width: 450px) {
+  .contents {
+    padding: 20px;
+  }
+}
