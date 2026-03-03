@@ -3,18 +3,23 @@ import styles from "./style/ProjectCard.module.css";
 import iconImgSample from "../../assets/icon/black-link.webp";
 import type React from "react";
 import type { Project } from "../../types/Project";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const navigate = useNavigate();
   const handleLinkClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
-  console.log(project.project_details);
+
+  const handleCardClick = () => {
+    navigate(`/project/${project.slug}`);
+  };
   return (
-    <div className={styles.body}>
+    <div className={styles.body} onClick={handleCardClick}>
       <div className={styles.top}>
         <img
           className={styles.icon}
@@ -39,7 +44,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <div className={styles.line}></div>
       <div className={styles.subtitle}>프로젝트 한줄소개</div>
       {project.project_details.map((detail) => (
-        <div className={styles.description}>{detail.summary}</div>
+        <div key={detail.project_detail_id} className={styles.description}>
+          {detail.summary}
+        </div>
       ))}
       <div className={styles.subtitle}>기술스택</div>
       <div className={styles.line}></div>

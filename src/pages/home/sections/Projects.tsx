@@ -11,7 +11,6 @@ import SectionTitle from "../../../components/ui/SectionTitle";
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const ICON_MAP: Record<string, string> = {};
 
   // 프로젝트 데이터 가져오기
   const {
@@ -101,9 +100,9 @@ const Projects = () => {
       <div className={styles.skills}>
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
-            <Link to={`/project/${project.slug}`} key={project.id}>
-              <ProjectCard project={project} />
-            </Link>
+            // <Link to={`/project/${project.slug}`} key={project.id}>
+            <ProjectCard key={project.id} project={project} />
+            // </Link>
           ))
         ) : (
           <p className={styles.noResult}>검색 결과가 없습니다.</p>
