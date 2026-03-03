@@ -12,7 +12,23 @@ const Intro = () => {
       <div className={styles.intro}>안녕하세요.</div>
       <div className={styles.intro}>본질에 충실한 백엔드 개발자</div>
       <div className={styles.intro}>임유리입니다.</div>
-      <div className={styles.more}>더 알아보기 ↓</div>
+      <a href={`#about`} className={styles.navItem}>
+        <svg viewBox="0 0 24 24" fill="none" className={styles.more}>
+          <path
+            d="M12 4v13"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
+          <path
+            d="M5.5 12.5 12 19l6.5-6.5"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </a>
     </div>
   );
 };
