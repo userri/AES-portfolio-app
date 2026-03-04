@@ -51,6 +51,7 @@ AES-portfolio-app
 │  │  └─ react.svg
 │  ├─ components
 │  │  └─ ui
+│  │     ├─ CareerBox.tsx
 │  │     ├─ CommentBox.tsx
 │  │     ├─ CommentForm.tsx
 │  │     ├─ Info.tsx
@@ -59,6 +60,7 @@ AES-portfolio-app
 │  │     ├─ SectionTitle.tsx
 │  │     ├─ SkillTag.tsx
 │  │     └─ style
+│  │        ├─ CareerBox.module.css
 │  │        ├─ CommentBox.module.css
 │  │        ├─ CommentForm.module.css
 │  │        ├─ Info.module.css
