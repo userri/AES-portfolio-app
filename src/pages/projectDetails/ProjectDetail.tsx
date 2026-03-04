@@ -103,7 +103,7 @@ const ProjectDetail = () => {
     },
     enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
-  if (isProjectLoading || isLoading) return <Loading />;
+  if (isProjectLoading || isLoading || loading) return <Loading />;
   if (error) return <p>에러가 발생했습니다.</p>;
 
   return (
