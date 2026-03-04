@@ -1,6 +1,6 @@
 import styles from "./ProjectDetailHeader.module.css";
 import back from "../../assets/icon/back.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface ProjectDetailHeaderProps {
   title?: string;
   intro?: string;
