@@ -22,13 +22,14 @@ const Projects = () => {
       const { data, error } = await supabase
         .from("projects")
         .select(
-          `*
-          , project_skills(
-          skill_id,
-          skills(name)
-          ), project_details (
-          project_detail_id:id,
-          summary
+          `*, 
+          project_skills(
+            skill_id,
+            skills(name)
+          ), 
+          project_details (
+            project_detail_id:id,
+            summary
           )
         `,
         )

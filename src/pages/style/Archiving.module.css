@@ -11,11 +11,11 @@
 }
 .boxes {
   display: grid;
-  /* box가 최소 400px 또는 너비만큼 유지, 없으면 자동으로 1열 */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   justify-content: center;
   gap: 30px;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
   align-items: center;
@@ -46,6 +46,11 @@
   font-size: 20px;
   color: #007bff;
   font-weight: bolder;
+  inline-size: 100%;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  display: block;
+  margin-bottom: 5px;
 }
 .link:hover {
   color: #007bff;
@@ -57,7 +62,7 @@
 }
 /* 화면 너비 좁아지면 1열로 변경 */
 /* 이 부분이 카드보다 넓어야 좁아짐을 감지할수 있음! */
-@media (max-width: 450px) {
+@media (max-width: 900px) {
   .boxes {
     grid-template-columns: 1fr;
     padding: 10px 15px;

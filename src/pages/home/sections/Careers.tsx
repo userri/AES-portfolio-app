@@ -16,12 +16,20 @@ const Careers = () => {
         .from("careers")
         .select(
           `
-          *, companies(company_name:name, intro, logo_url),
+          *, 
+          companies(
+            company_name:name, 
+            intro, logo_url
+          ),
           skills: career_skills(
-          skill_id,
+            skill_id,
             skill_name:skills (name)
-          )
-          ,career_descriptions(description_id:id, title, detail, duration)`,
+          ),
+          career_descriptions(
+            description_id:id, 
+            title, detail, 
+            duration
+          )`,
         )
         .order("start_date", { ascending: false })
         .order("id", {

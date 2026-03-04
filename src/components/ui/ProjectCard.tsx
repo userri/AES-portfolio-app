@@ -45,7 +45,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <div className={styles.subtitle}>프로젝트 한줄소개</div>
       {project.project_details.map((detail) => (
         <div key={detail.project_detail_id} className={styles.description}>
-          {detail.summary}
+          ▸ {detail.summary}
         </div>
       ))}
       <div className={styles.subtitle}>기술스택</div>

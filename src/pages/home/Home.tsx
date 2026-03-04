@@ -7,11 +7,11 @@ import Intro from "./sections/Intro";
 import Careers from "./sections/Careers";
 
 import styles from "../style/Home.module.css";
-import { useEffect, useState } from "react";
-import Loading from "../../components/ui/Loading";
+// import { useEffect, useState } from "react";
+// import Loading from "../../components/ui/Loading";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
