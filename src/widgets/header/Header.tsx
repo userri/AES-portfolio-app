@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
+import { Link as ScrollLink } from "react-scroll";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,14 +46,20 @@ const Header = () => {
       {/* 내비게이션 바 */}
       <nav className={`${styles.nav} ${isMenuOpen ? styles.navActive : ""}`}>
         {menuItems.map((item) => (
-          <a
+          <ScrollLink
             key={item.target}
-            href={`#${item.target}`}
+            to={item.target}
+            spy={true}
+            duration={500}
+            offset={-80}
             className={styles.navItem}
+            activeClass={styles.active}
+            // 클릭 시 모바일 메뉴 닫기
             onClick={() => setIsMenuOpen(false)}
+            style={{ cursor: "pointer" }}
           >
             {item.name}
-          </a>
+          </ScrollLink>
         ))}
       </nav>
     </div>
