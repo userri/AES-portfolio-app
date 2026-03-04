@@ -126,7 +126,7 @@ const Projects = () => {
             <ProjectCard key={project.id} project={project} />
           ))
         ) : (
-          <p className={styles.noResult}>검색 결과가 없습니다.</p>
+          <div className={styles.noResult}>검색 결과가 없습니다.</div>
         )}
       </div>
     </div>

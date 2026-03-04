@@ -1,6 +1,9 @@
 import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Skills.module.css";
-import sampleImg from "../../../assets/icon/calendar.png";
+import language from "../../../assets/icon/language.svg";
+import frontend from "../../../assets/icon/frontend.svg";
+import backend from "../../../assets/icon/backend.svg";
+import dev_ops from "../../../assets/icon/dev-ops.svg";
 import SkillTag from "../../../components/ui/SkillTag";
 import { useQuery } from "@tanstack/react-query";
 import type { Skill } from "../../../types/Skill";
@@ -27,10 +30,10 @@ const Skills = () => {
     },
   });
   const skillCategory = [
-    { skillName: "LANGUAGE", skillIcon: sampleImg },
-    { skillName: "FRONTEND", skillIcon: sampleImg },
-    { skillName: "BACKEND", skillIcon: sampleImg },
-    { skillName: "DEV_OPS", skillIcon: sampleImg },
+    { skillName: "LANGUAGE", skillIcon: language },
+    { skillName: "FRONTEND", skillIcon: frontend },
+    { skillName: "BACKEND", skillIcon: backend },
+    { skillName: "DEV_OPS", skillIcon: dev_ops },
   ];
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>에러가 발생했습니다.</p>;
@@ -42,7 +45,7 @@ const Skills = () => {
         {skillCategory.map((skillKind) => (
           <div key={skillKind.skillName} className={styles.skillBox}>
             <div className={styles.iconTitle}>
-              <img src={skillKind.skillIcon} alt="" />
+              <img src={skillKind.skillIcon} className={styles.icon} alt="" />
               <div className={styles.category}>{skillKind.skillName}</div>
             </div>
             <div className={styles.skillContents}>

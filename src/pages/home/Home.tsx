@@ -5,16 +5,27 @@ import Projects from "./sections/Projects";
 import Footer from "../../widgets/footer/Footer";
 import Intro from "./sections/Intro";
 import Careers from "./sections/Careers";
-// import { Link } from "react-router-dom";
+
 import styles from "../style/Home.module.css";
+import { useEffect, useState } from "react";
+import Loading from "../../components/ui/Loading";
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
-      {/* <h1>홈 화면입니다</h1>
-      <Link to="/project-detail">
-        <button>프로젝트 상세 화면으로 이동</button>
-      </Link>{" "} */}
       <Intro />
       <section className={styles.section} id="about">
         <About />

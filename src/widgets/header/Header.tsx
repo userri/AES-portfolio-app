@@ -20,7 +20,7 @@ const Header = () => {
     { name: "Skills", target: "skills" },
     { name: "Archiving", target: "archiving" },
     { name: "Projects", target: "projects" },
-    { name: "Careers", target: "careers" },
+    { name: "Activities", target: "careers" },
   ];
   return (
     <div className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>

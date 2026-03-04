@@ -36,7 +36,7 @@ const Careers = () => {
   if (error) return <p>에러가 발생했습니다.</p>;
   return (
     <div className={styles.body}>
-      <SectionTitle title="CAREER" />
+      <SectionTitle title="ACTIVITIES" />
       <div className={styles.totalBox}>
         <div className={styles.vertical} />
         <div className={styles.careers}>

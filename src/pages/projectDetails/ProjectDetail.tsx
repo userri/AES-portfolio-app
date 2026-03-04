@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
 import ProjectDetailHeader from "../../widgets/projectDetailHeader/ProjectDetailHeader";
 import "./MarkdownModule.css";
+import Loading from "../../components/ui/Loading";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +18,23 @@ const ProjectDetail = () => {
   const [loading, setLoading] = useState(true);
   const [projectId, setProjectId] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const { data: project, isLoading: isProjectLoading } = useQuery({
+    queryKey: ["project", slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const title = project?.title || "제목 없음";
+  const project_intro = project?.project_intro || "소개글이 없습니다.";
 
   // 스크롤 진행상황 표시
   useEffect(() => {
@@ -85,13 +103,12 @@ const ProjectDetail = () => {
     },
     enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
-
-  if (isLoading || loading) return <p>로딩 중...</p>;
+  if (isProjectLoading || isLoading) return <Loading />;
   if (error) return <p>에러가 발생했습니다.</p>;
 
   return (
     <div className={styles.body}>
-      <ProjectDetailHeader />
+      <ProjectDetailHeader title={title} intro={project_intro} />
       <div className={styles.progressBarContainer}>
         <div
           className={styles.progressBar}

@@ -10,7 +10,9 @@ const Intro = () => {
       </div>
       <div className={styles.line}></div>
       <div className={styles.intro}>안녕하세요.</div>
-      <div className={styles.intro}>본질에 충실한 백엔드 개발자</div>
+      <div className={styles.intro}>
+        작은 기능도 전체 흐름 속에서 설계하는 개발자,
+      </div>
       <div className={styles.intro}>임유리입니다.</div>
       <a href={`#about`} className={styles.navItem}>
         <svg viewBox="0 0 24 24" fill="none" className={styles.more}>
