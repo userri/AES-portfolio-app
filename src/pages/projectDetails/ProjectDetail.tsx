@@ -103,6 +103,9 @@ const ProjectDetail = () => {
     },
     enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
+
+  const commentCount = comments?.length || 0;
+
   if (isProjectLoading || isLoading || loading) return <Loading />;
   if (error) return <p>에러가 발생했습니다.</p>;
 
@@ -121,10 +124,7 @@ const ProjectDetail = () => {
         </div>
         <div className={styles.commentBox}>
           <div className={styles.commentsInfo}>
-            <img alt="" />
-            <div>댓글 0개</div>
-            <img src={"하트아이콘"} alt="" />
-            <div>좋아요 17개</div>
+            <div>댓글 {commentCount}개</div>
           </div>
           <div className={styles.writtenCommentBox}>
             {comments.map((comment, index) => (
