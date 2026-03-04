@@ -51,7 +51,7 @@ const Header = () => {
             to={item.target}
             spy={true}
             duration={500}
-            offset={-80}
+            offset={-60}
             className={styles.navItem}
             activeClass={styles.active}
             // 클릭 시 모바일 메뉴 닫기
