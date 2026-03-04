@@ -1,9 +1,10 @@
 import SectionTitle from "../../../components/ui/SectionTitle";
 import styles from "../../style/Careers.module.css";
-import SkillTag from "../../../components/ui/SkillTag";
+// import SkillTag from "../../../components/ui/SkillTag";
 import { useQuery } from "@tanstack/react-query";
 import type { Career } from "../../../types/Career";
 import { supabase } from "../../../api/supabase";
+import CareerBox from "../../../components/ui/CareerBox";
 const Careers = () => {
   const {
     data: careers = [],
@@ -49,61 +50,62 @@ const Careers = () => {
         <div className={styles.vertical} />
         <div className={styles.careers}>
           {careers.map((career) => (
-            <div key={career.company_id} className={styles.careerBox}>
-              <img
-                className={styles.logo}
-                src={career.companies?.logo_url ?? ""}
-                alt=""
-              />
-              <div className={styles.texts}>
-                <div className={styles.companyName}>
-                  {career.companies?.company_name ?? ""}
-                </div>
-                <div className={styles.companyDuration}>
-                  {career.start_date} - {career.end_date ?? "(재직 중)"}
-                </div>
-                <div className={styles.companyIntro}>
-                  {career.companies?.intro ?? ""}
-                </div>
-                <div className={styles.role}>
-                  {career.skills.map((skill) => (
-                    <SkillTag
-                      key={skill.skill_id}
-                      // 객체면 문자열로 들어가게
-                      text={skill.skill_name?.name ?? ""}
-                      bgColor="black"
-                      textColor="white"
-                    />
-                  ))}
-                </div>
-                <div className={styles.projectList}>
-                  {career.career_descriptions.map((project, index) => (
-                    <div key={index} className={styles.projectWithLine}>
-                      <div
-                        key={project.description_id}
-                        className={styles.projectItem}
-                      >
-                        <div className={styles.titleGroup}>
-                          <div className={styles.titleHead} />
-                          <div className={styles.projectTitle}>
-                            {project.title}
-                          </div>
-                        </div>
-                        <div className={styles.projectDuration}>
-                          {project.duration}
-                        </div>
-                        <div className={styles.projectSummary}>
-                          {project.detail}
-                        </div>
-                      </div>
-                      {index !== career.career_descriptions.length - 1 && (
-                        <div className={styles.line}></div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <CareerBox key={career.id} career={career} />
+            // <div key={career.company_id} className={styles.careerBox}>
+            //   <img
+            //     className={styles.logo}
+            //     src={career.companies?.logo_url ?? ""}
+            //     alt=""
+            //   />
+            //   <div className={styles.texts}>
+            //     <div className={styles.companyName}>
+            //       {career.companies?.company_name ?? ""}
+            //     </div>
+            //     <div className={styles.companyDuration}>
+            //       {career.start_date} - {career.end_date ?? "(재직 중)"}
+            //     </div>
+            //     <div className={styles.companyIntro}>
+            //       {career.companies?.intro ?? ""}
+            //     </div>
+            //     <div className={styles.role}>
+            //       {career.skills.map((skill) => (
+            //         <SkillTag
+            //           key={skill.skill_id}
+            //           // 객체면 문자열로 들어가게
+            //           text={skill.skill_name?.name ?? ""}
+            //           bgColor="black"
+            //           textColor="white"
+            //         />
+            //       ))}
+            //     </div>
+            //     <div className={styles.projectList}>
+            //       {career.career_descriptions.map((project, index) => (
+            //         <div key={index} className={styles.projectWithLine}>
+            //           <div
+            //             key={project.description_id}
+            //             className={styles.projectItem}
+            //           >
+            //             <div className={styles.titleGroup}>
+            //               <div className={styles.titleHead} />
+            //               <div className={styles.projectTitle}>
+            //                 {project.title}
+            //               </div>
+            //             </div>
+            //             <div className={styles.projectDuration}>
+            //               {project.duration}
+            //             </div>
+            //             <div className={styles.projectSummary}>
+            //               {project.detail}
+            //             </div>
+            //           </div>
+            //           {index !== career.career_descriptions.length - 1 && (
+            //             <div className={styles.line}></div>
+            //           )}
+            //         </div>
+            //       ))}
+            //     </div>
+            //   </div>
+            // </div>
           ))}
         </div>
       </div>
