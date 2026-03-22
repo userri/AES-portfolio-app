@@ -2,22 +2,56 @@ import { useQuery } from "@tanstack/react-query";
 import styles from "./ProjectDetail.module.css";
 import type Comment from "../../types/Comment";
 import { supabase } from "../../api/supabase";
-// import { useState } from "react";
 import CommentBox from "../../components/ui/CommentBox";
 import CommentForm from "../../components/ui/CommentForm";
-// import icon from "../../assets/icon/오토에버스쿨 1.png";
-// import back from "../../assets/icon/calendar.png";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
 import ProjectDetailHeader from "../../widgets/projectDetailHeader/ProjectDetailHeader";
+import "./MarkdownModule.css";
+import Loading from "../../components/ui/Loading";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [projectId, setProjectId] = useState<number | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const { data: project, isLoading: isProjectLoading } = useQuery({
+    queryKey: ["project", slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const title = project?.title || "제목 없음";
+  const project_intro = project?.project_intro || "소개글이 없습니다.";
+
+  // 스크롤 진행상황 표시
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight -
+        (document.scrollingElement?.clientHeight || 0);
+      const windowScroll = window.scrollY;
+      if (totalHeight > 0) {
+        setScrollProgress((windowScroll / totalHeight) * 100);
+      }
+    };
+    // 스크롤 이벤트 리스너
+    window.addEventListener("scroll", handleScroll);
+    // 클린업 함수: 컴포넌트가 사라질 때 이벤트 제거 (메모리 누수 방지)
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -70,22 +104,27 @@ const ProjectDetail = () => {
     enabled: !!projectId, // projectId 있을 때만 쿼리 실행
   });
 
-  if (isLoading || loading) return <p>로딩 중...</p>;
+  const commentCount = comments?.length || 0;
+
+  if (isProjectLoading || isLoading || loading) return <Loading />;
   if (error) return <p>에러가 발생했습니다.</p>;
 
   return (
     <div className={styles.body}>
-      <ProjectDetailHeader />
+      <ProjectDetailHeader title={title} intro={project_intro} />
+      <div className={styles.progressBarContainer}>
+        <div
+          className={styles.progressBar}
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
       <div className={styles.contents}>
-        <div className={styles.mdBox}>
+        <div className={`${styles.mdBox} markdown markdown-body`}>
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         <div className={styles.commentBox}>
           <div className={styles.commentsInfo}>
-            <img alt="" />
-            <div>댓글 0개</div>
-            <img src={"하트아이콘"} alt="" />
-            <div>좋아요 17개</div>
+            <div>댓글 {commentCount}개</div>
           </div>
           <div className={styles.writtenCommentBox}>
             {comments.map((comment, index) => (

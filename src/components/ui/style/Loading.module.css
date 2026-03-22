@@ -1,0 +1,44 @@
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loadingImg {
+  width: 60px;
+  height: auto;
+  animation: pulseRotate 2s infinite ease-in-out;
+}
+
+.loadingText {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: #333;
+  margin: 0;
+}
+
+@keyframes pulseRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

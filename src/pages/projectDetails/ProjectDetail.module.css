@@ -1,5 +1,6 @@
 .body {
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 .contents {
@@ -13,7 +14,29 @@
 .mdBox {
   min-height: 100px;
   height: fit-content;
-  border: 1px solid rgb(194, 194, 194);
+  padding: 40px 30px;
+  background-color: white;
+  border: 2px solid rgb(194, 194, 194);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progressBarContainer {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(to right, #e0e0e0, #1c03ff);
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(255, 130, 10, 0.5);
 }
 
 .commentBox {
@@ -23,6 +46,9 @@
 }
 
 .commentsInfo {
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: 700;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -31,7 +57,7 @@
 .writtenCommentBox {
   max-width: 100%;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -49,4 +75,9 @@
   width: 100%;
   height: 1px;
   background: rgb(205, 205, 205);
+}
+@media (max-width: 450px) {
+  .contents {
+    padding: 20px;
+  }
 }

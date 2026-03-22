@@ -1,8 +1,10 @@
 .body {
   width: 460px;
+  max-width: calc(100vw-40px);
+
   height: fit-content;
   font-family: "Noto Sans";
-  padding: 25px 30px;
+  padding: 20px;
   color: black;
   background-color: white;
   border-radius: 10px;
@@ -10,6 +12,16 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: 0 0 15px #7b7b7b;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer !important;
+}
+
+.body:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-color: black;
 }
 
 .top {
@@ -20,7 +32,7 @@
 }
 
 .memberCount {
-  background-color: rgb(214, 139, 48);
+  background-color: rgb(234, 130, 10);
   padding: 8px 10px;
   color: white;
   font-size: 14px;
@@ -37,9 +49,13 @@
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
-  -webkit-text-stroke: 0.5px black;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.intro {
+  font-size: 20x;
+  font-weight: 700;
 }
 
 .serviceLink {
@@ -61,9 +77,8 @@
 }
 
 .subtitle {
-  font-size: 18px;
-  font-weight: bold;
-  -webkit-text-stroke: 0.5px black;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .description {
@@ -97,4 +112,25 @@
   font-size: 14px;
   color: #8d8d8d;
   float: right;
+}
+@media (max-width: 480px) {
+  .body {
+    width: 100%;
+    padding: 15px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .intro {
+    font-size: 16px;
+  }
+  .subtitle {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  .skills {
+    font-size: 10px;
+  }
 }

@@ -25,4 +25,7 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .body {
+    padding: 10px;
+  }
 }

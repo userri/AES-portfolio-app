@@ -5,7 +5,6 @@ import type { Project } from "../../../types/Project";
 import { supabase } from "../../../api/supabase";
 import readingGlass from "../../../assets/icon/돋보기.png";
 import SkillTag from "../../../components/ui/SkillTag";
-import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import SectionTitle from "../../../components/ui/SectionTitle";
 
@@ -23,13 +22,18 @@ const Projects = () => {
       const { data, error } = await supabase
         .from("projects")
         .select(
-          `*
-          , project_skills(
-          skill_id,
-          skills(name)
-        )`,
+          `*, 
+          project_skills(
+            skill_id,
+            skills(name)
+          ), 
+          project_details (
+            project_detail_id:id,
+            summary
+          )
+        `,
         )
-        .order("start_date", { ascending: false });
+        .order("start_date", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Project[];
     },
@@ -76,6 +80,30 @@ const Projects = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <img className={styles.icon} src={readingGlass} alt="검색" />
+        {searchTerm.trim() && (
+          <button
+            type="button"
+            className={styles.deleteButton}
+            onClick={() => setSearchTerm("")}
+          >
+            <svg viewBox="0 0 24 24" fill="none" className={styles.delete}>
+              <path
+                d="M18 6 6 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="m6 6 12 12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
       </div>
       <div className={styles.searchTags}>
         {searchSkills.map((skill) => (
@@ -96,18 +124,10 @@ const Projects = () => {
       <div className={styles.skills}>
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
-            <Link to={`/project/${project.slug}`} key={project.id}>
-              <ProjectCard
-                iconImg={project.logo_url}
-                memberCnt={project.member_count}
-                title={project.title}
-                serviceLink={project.service_link}
-                skills={project.project_skills.map((item) => item.skills.name)}
-              />
-            </Link>
+            <ProjectCard key={project.id} project={project} />
           ))
         ) : (
-          <p className={styles.noResult}>검색 결과가 없습니다.</p>
+          <div className={styles.noResult}>검색 결과가 없습니다.</div>
         )}
       </div>
     </div>

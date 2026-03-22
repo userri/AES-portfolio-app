@@ -50,7 +50,7 @@ const CommentForm = ({ projectId }: { projectId: number }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.info}>
-        <img src={person} alt="" />
+        <img className={styles.personIcon} src={person} alt="" />
         <div className={styles.nicknameBox}>
           <input
             className={styles.nickname}

@@ -66,13 +66,36 @@
 }
 
 .more {
-  color: white;
+  height: 100px;
+  width: 180px;
+  color: gray;
   font-weight: bold;
   font-size: large;
-  border-radius: 100px;
-  background-color: #e8d314c6;
+  border-radius: 10px;
+  /* background-color: #e8d314c6; */
   padding: 12px 24px;
   margin-top: 20px;
+  animation: arrowBounce 2.8s ease-in-out infinite;
+}
+.more:hover {
+  color: white;
+  animation-duration: 2;
 }
 
 /* 양옆 좁아지면 헤더내려와야함, scale 바뀌어야할지? */
+@media (max-width: 400px) {
+  .name {
+    font-size: 40px;
+  }
+}
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
