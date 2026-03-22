@@ -12,7 +12,6 @@ const Intro = () => {
       <div className={styles.intro}>안녕하세요.</div>
       <div className={styles.intro}>
         기능 구현을 넘어, 시스템의 지속 가능한 안정성과 배포 흐름을 설계하는
-        개발자
       </div>
       <div className={styles.intro}>임유리입니다.</div>
       <a href={`#about`} className={styles.navItem}>
